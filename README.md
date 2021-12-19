@@ -47,4 +47,18 @@ A doctor can spend medication and write reports with your medical file, and he c
 | `/activated` | Verify that the account is active or not   | user only `<PrivateRoute>` | Confirm activation to enter the site to save rights                                         |
 | `/restpassword` | To set the password | user only `<PrivateRoute>` | If the password is forgotten, it will be set from restpassword                             |
 | `/forget` | Forget password page                  | user only `<PrivateRoute>` | If the password is forgotten, it will be set again after sending a link                                           
+## Components
 
+- LoginPage
+- homePage
+- ProfilePage
+- SignupPage
+- filemedicalPage
+- activatedPage
+- restpasswordPage
+- forgetPage
+- Navbar
+
+
+## UML
+![UML Diagram](https://user-images.githubusercontent.com/92247967/146677090-5669ac00-9a45-4b94-9101-1b53f1111f20.png)
