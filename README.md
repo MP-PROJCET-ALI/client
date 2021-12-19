@@ -46,12 +46,5 @@ A doctor can spend medication and write reports with your medical file, and he c
 | `/filemedical`     | medical file page   | user only `<PrivateRoute>` | Shows all exit points in a list                              |
 | `/activated` | Verify that the account is active or not   | user only `<PrivateRoute>` | Confirm activation to enter the site to save rights                                         |
 | `/restpassword` | To set the password | user only `<PrivateRoute>` | If the password is forgotten, it will be set from restpassword                             |
-| `/forget` | Forget password page                  | user only `<PrivateRoute>` | If the password is forgotten, it will be set again after sending a link                                           |
-|                  |                      |                            |                                                              |
-|                  |                      |                            |                                                              |
-|                  |                      |                            |                                                              |
-|                  |                      |                            |                                                              |
-|                  |                      |                            |                                                              |
-|                  |                      |                            |                                                              |
-|                  |                      |                            |                                                              |
+| `/forget` | Forget password page                  | user only `<PrivateRoute>` | If the password is forgotten, it will be set again after sending a link                                           
 
