@@ -29,4 +29,29 @@ A doctor can spend medication and write reports with your medical file, and he c
  - **The user who logged in with the role can delete or modify with the time of modification and the `admin` name.**
  - **The user has a login and has the role of a control board that contains all the information and statistics of the web site that enable them to control all    patients.**
  
- 
+ ## user profile:
+
+- **See my profile**
+- **See the exit point**
+ - **Look at the state of health**
+- **Set an appointment**
+
+## React Router Routes (React App)
+
+| Path             | Component            | Permissions                | Behavior                                                     |
+| ---------------- | -------------------- | -------------------------- | ------------------------------------------------------------ |
+| `/`              | SplashPage           | public `<Route>`           | Home page                                                    |
+| `/signup`        | SignupPage           |anon only `<AnonRoute>`     |Registration form, after activating the account, go to the login page |
+| `/login`         | LoginPage            | anon only `<AnonRoute>`    | Login form, link to signup, navigate to homepage after login |
+| `/exitpoint`     | TournamentListPage   | user only `<PrivateRoute>` | Shows all exit points in a list                              |
+| `/exitpoint/add` | TournamentListPage   | user only `<PrivateRoute>` | Edits a exit points                                          |
+| `/exitpoint/:id` | TournamentDetailPage | user only `<PrivateRoute>` | Details of a exit points to edit                             |
+| `/exitpoint/:id` | n/a                  | user only `<PrivateRoute>` | Delete exit points                                           |
+|                  |                      |                            |                                                              |
+|                  |                      |                            |                                                              |
+|                  |                      |                            |                                                              |
+|                  |                      |                            |                                                              |
+|                  |                      |                            |                                                              |
+|                  |                      |                            |                                                              |
+|                  |                      |                            |                                                              |
+
