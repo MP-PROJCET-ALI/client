@@ -62,3 +62,24 @@ A doctor can spend medication and write reports with your medical file, and he c
 
 ## UML
 ![UML Diagram](https://user-images.githubusercontent.com/92247967/146677090-5669ac00-9a45-4b94-9101-1b53f1111f20.png)
+
+
+## wirframes
+
+
+**SING UP**
+ *![sing up](https://user-images.githubusercontent.com/92247967/146677173-30c2e60a-502b-4c10-a014-9b2edb3bdb02.png)
+ 
+ **SING IN**
+ ![login](https://user-images.githubusercontent.com/92247967/146677194-4b52217e-b28d-42f3-97a4-5b83b0378cd0.png)
+**HOME**
+![home](https://user-images.githubusercontent.com/92247967/146677210-627b2d80-67d2-4ea5-ae08-7ac0845ce68a.png)
+
+**MEDIECL FILE**
+
+![mediecl file](https://user-images.githubusercontent.com/92247967/146677238-beefb62b-c626-43f8-9c25-66c6f41b2649.png)
+
+
+
+
+
