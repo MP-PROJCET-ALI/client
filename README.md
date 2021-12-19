@@ -4,7 +4,7 @@
 
 ➤ Deployment: https://Deployment
 
-➤ Server Frontend: http://localhost:5000
+➤ While running Frontend: http://localhost:3000
 
 ➤ While running locally: http://localhost:5000
 
