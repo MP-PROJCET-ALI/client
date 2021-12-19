@@ -40,13 +40,13 @@ A doctor can spend medication and write reports with your medical file, and he c
 
 | Path             | Component            | Permissions                | Behavior                                                     |
 | ---------------- | -------------------- | -------------------------- | ------------------------------------------------------------ |
-| `/`              | SplashPage           | public `<Route>`           | Home page                                                    |
+| `/`              | homePage           | public `<Route>`           | Home page                                                    |
 | `/signup`        | SignupPage           |anon only `<AnonRoute>`     |Registration form, after activating the account, go to the login page |
 | `/login`         | LoginPage            | anon only `<AnonRoute>`    | Login form, link to signup, navigate to homepage after login |
-| `/exitpoint`     | TournamentListPage   | user only `<PrivateRoute>` | Shows all exit points in a list                              |
-| `/exitpoint/add` | TournamentListPage   | user only `<PrivateRoute>` | Edits a exit points                                          |
-| `/exitpoint/:id` | TournamentDetailPage | user only `<PrivateRoute>` | Details of a exit points to edit                             |
-| `/exitpoint/:id` | n/a                  | user only `<PrivateRoute>` | Delete exit points                                           |
+| `/filemedical`     | medical file page   | user only `<PrivateRoute>` | Shows all exit points in a list                              |
+| `/activated` | Verify that the account is active or not   | user only `<PrivateRoute>` | Confirm activation to enter the site to save rights                                         |
+| `/restpassword` | To set the password | user only `<PrivateRoute>` | If the password is forgotten, it will be set from restpassword                             |
+| `/forget` | Forget password page                  | user only `<PrivateRoute>` | If the password is forgotten, it will be set again after sending a link                                           |
 |                  |                      |                            |                                                              |
 |                  |                      |                            |                                                              |
 |                  |                      |                            |                                                              |
