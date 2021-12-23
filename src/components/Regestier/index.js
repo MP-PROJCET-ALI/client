@@ -25,7 +25,7 @@ const REGISTER = () => {
         role: "61a4eae86ad0c2fe2b45d0aa",
       });
       console.log(result.data);
-      // if register is successful navigate to login page 
+      // if register is successful navigate to login page g
       if (result.data.errors) {
           console.log(result.data.errors[0].msg);
           setErr(result.data.errors[0].msg);
