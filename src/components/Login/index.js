@@ -11,10 +11,7 @@ const Login = () => {
   const login = async (e) => {
     try {
       e.preventDefault();
-      // const result = await axios.post(`${BASE_URL}/login`, {
-      //   email: e.target.email.value,
-      //   password: e.target.password.value,
-      // });
+     
       const result = await axios.post(`${BASE_URL}/login`, {
         email: e.target.email.value,
         password: e.target.password.value,
