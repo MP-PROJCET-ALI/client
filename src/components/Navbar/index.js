@@ -9,7 +9,7 @@ const NAVBAR = () => {
       <div className="container">
         <div className="grid-nav">
           <h1 className="logo">
-            <span>social</span>media
+            <span>AlSalam</span>Hospital
           </h1>
           <div className="routes">
             <ul className="route-list">
