@@ -8,9 +8,7 @@ const NAVBAR = () => {
     <header className="navbar-header">
       <div className="container">
         <div className="grid-nav">
-          <h1 className="logo">
-            <span>social</span>media
-          </h1>
+          
           <div className="routes">
             <ul className="route-list">
               <li className="list-nav">
@@ -19,6 +17,9 @@ const NAVBAR = () => {
            
               <li>
                 <Link to="/Regestier">Regestier</Link>
+              </li>
+              <li>
+              <Link to="/Profile">Profile</Link>
               </li>
             </ul>
           </div>

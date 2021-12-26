@@ -5,8 +5,9 @@ import Navbar from "./components/Navbar";
 import Regestier from "./components/Regestier";
 import Home from "./components/Home";
 import Forget from './components/Forget'
-import PasswordReset from './components/Passwordrest'
-import Activated from './components/Activated'
+import PasswordReset from './components/Passwordrest';
+import Activated from './components/Activated';
+import Profile from './components/Profile'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route exact path='/forgot/:token' element={<PasswordReset />}/>
         <Route exact path="/forgot" element={<Forget/>}/>
         <Route exact path="/activate/:token" element={<Activated/>}/>
+        <Route exact path="/Profile" element={<Profile/>}/>
       </Routes>
       </>
   );
