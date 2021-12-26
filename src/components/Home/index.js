@@ -10,9 +10,9 @@ const Home = () => {
     <>
     <article className="home"> 
   <section class="one">
-    <div class="img">
-      <img src="https://abs.twimg.com/sticky/illustrations/lohp_en_850x623.png" alt="twitter"/>
-    </div>
+    {/* <div class="img">
+      <img src="https://abs.twimg.com/sticky/illustrations/lohp_en_850x623.png" alt="twitter"/> 
+     </div> */}
     <div>
       <i class="fab fa-twitter"></i>
     </div>
