@@ -9,12 +9,12 @@ const Profile = () => {
   const [local, setLocal] = useState([]);
   const [edit, setEdit] = useState("");
 
-  
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   const getData = async () => {
    
     if(local){
     const item = await axios.get(
-      `https://mersall.herokuapp.com/email/${local.email}`
+      `${BASE_URL}/${local.email}`
     );
     setAccount(item.data);} else {
     // navigate('/home')
@@ -23,7 +23,7 @@ const Profile = () => {
 
 
   const getDataLS = () => {
-    setLocal(JSON.parse(localStorage.getItem("newUser")));
+    setLocal(JSON.parse(localStorage.getItem("user")));
   };
 
   useEffect(() => {
@@ -39,11 +39,11 @@ const Profile = () => {
   const editName = async (e) => {
     e.preventDefault();
     if (edit.length > 0) {
-       const editFullName = await axios.put(`https://mersall.herokuapp.com/edit/${local.email}`, {
+       const editFullName = await axios.put(`${BASE_URL}/${local.email}`, {
         fullName: edit,
         });
         console.log(editFullName);
-        document.getElementById("username")
+        document.getElementById("user")
         getData();
       } else {
         console.log("");

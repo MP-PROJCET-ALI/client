@@ -39,7 +39,7 @@ const Login = () => {
           <input type="email" name="email" />
           <label htmlFor="password">Password:</label>
           <input type="password" name="password" />
-          <button type="submit">Login</button>
+         <button>login</button>
         </form>
         <p>{err}</p>
         <p className="forgot" onClick={() => {
