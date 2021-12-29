@@ -6,8 +6,7 @@ body{
     position: relative;
 }
 .navbar-header{
-    /* position: fixed; */
-    margin: auto;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
