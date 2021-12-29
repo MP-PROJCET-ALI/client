@@ -5,6 +5,10 @@ html{
 body{
     position: relative;
 }
+.logo{
+    width: 59px;
+
+}
 .navbar-header{
     position: fixed;
     top: 0;

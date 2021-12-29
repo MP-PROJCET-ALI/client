@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import img1 from "../../imge/logo-removebg-preview.png"
 
 import { Link } from "react-router-dom";
 import "./style.css";
@@ -14,7 +15,8 @@ useEffect(() => {
       <div className="container">
         <div className="grid-nav">
           <h1 className="logo">
-            <span>ALslam</span>Hospital
+            {/* <span>ALslam</span>Hospital */}
+            <img src={img1} className="logo" />
           </h1>
           <div className="routes">
             <ul className="route-list">

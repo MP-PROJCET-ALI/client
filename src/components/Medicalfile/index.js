@@ -33,6 +33,7 @@ const Medicalfile = () => {
   return (
     <div className="profile">
       {medical.map((item, i) => {
+        console.log(item.DoctorId.DoctorId);
         return (
           <div>
             <div className="sidenav">
