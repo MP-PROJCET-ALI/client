@@ -8,7 +8,7 @@ import Forget from './components/Forget'
 import PasswordReset from './components/Passwordrest';
 import Activated from './components/Activated';
 import Profile from './components/Profile';
-import Medicalfile from './components/Profile'
+import Medicalfile from './components/Medicalfile'
 
 
 
