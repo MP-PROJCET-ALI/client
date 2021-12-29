@@ -8,7 +8,7 @@
 body {
     background-color: #e8f5ff;
     font-family: Arial;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 /* NavbarTop */
