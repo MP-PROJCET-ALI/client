@@ -7,7 +7,9 @@ import Home from "./components/Home";
 import Forget from './components/Forget'
 import PasswordReset from './components/Passwordrest';
 import Activated from './components/Activated';
-import Profile from './components/Profile'
+import Profile from './components/Profile';
+import Medicalfile from './components/Profile'
+
 
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
         <Route exact path="/forgot" element={<Forget/>}/>
         <Route exact path="/activate/:token" element={<Activated/>}/>
         <Route exact path="/Profile" element={<Profile/>}/>
+        <Route exact path="/Medicalfile" element={<Medicalfile/>}/>
       </Routes>
       </>
   );
