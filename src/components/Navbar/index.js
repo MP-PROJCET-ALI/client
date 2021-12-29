@@ -8,18 +8,23 @@ const NAVBAR = () => {
     <header className="navbar-header">
       <div className="container">
         <div className="grid-nav">
-          
+          <h1 className="logo">
+            <span>ALslam</span>Hospital
+          </h1>
           <div className="routes">
             <ul className="route-list">
               <li className="list-nav">
-                <Link to="/login">login</Link>
+                <Link to="/home">Home</Link>
               </li>
            
               <li>
-                <Link to="/Regestier">Regestier</Link>
+                <Link to="/Aboutus">About</Link>
               </li>
               <li>
-              <Link to="/Profile">Profile</Link>
+                <Link to="/Profile">Profile</Link>
+              </li>
+              <li>
+                <Link to="/medicl">medicl</Link>
               </li>
             </ul>
           </div>
@@ -28,6 +33,7 @@ const NAVBAR = () => {
               {localStorage.getItem("newUser") ? (
                 <button className="logout-btn">logout</button>
               ) : (
+                
                 <li>
                   <Link to={"/login"}> <GrLogin/></Link>
                 </li>
@@ -37,6 +43,7 @@ const NAVBAR = () => {
         </div>
       </div>
     </header>
+   
   );
 };
 

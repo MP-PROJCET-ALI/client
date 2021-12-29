@@ -1,52 +1,175 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
-const ForgotPass = () => {
+import "./style.css";
+import { useNavigate } from "react-router";
+import { useState, useEffect } from "react";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+const Profile = () => {
   const navigate = useNavigate();
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const [err, setErr] = useState("");
-  const reset = async (e) => {
-    try {
-      e.preventDefault();
-      const result = await axios.post(`${BASE_URL}/forgott`, {
-        email: e.target.email.value,
-      });
-      console.log(result.data);
-      if (result.data.success) {
-        setErr(result.data.success);
-      }
-      if (result.data.errors[0].msg) {
-        setErr(result.data.errors[0].msg);
-      }
-    } catch (error) {
-      console.log(error);
+  const [account, setAccount] = useState([]);
+  const [local, setLocal] = useState([]);
+  const [edit, setEdit] = useState("");
+  const [editEmail, setEmail] = useState("");
+
+  const getData = async () => {
+    console.log(local);
+    if (local.result) {
+      const item = await axios.get(`${BASE_URL}/email/${local.result.email}`);
+    
+
+      setAccount(item.data);
+    } else {
+      // navigate('/home')
     }
   };
 
-  return (
-    <div className="home">
-      <div className="formm">
-        <h1>Why did you forget :(</h1>
+  const getDataLS = () => {
+    setLocal(JSON.parse(localStorage.getItem("user")));
+  };
 
-        <form onSubmit={reset}>
-          <h3>Enter email to send you password reset link</h3>
-          <br />
-          <label htmlFor="email">Email:</label>
-          <input type="email" name="email" />
-          <button type="submit">Send</button>
-        </form>
-        <p>{err}</p>
-        <button
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          Back
-        </button>
-      </div>
+  useEffect(() => {
+    getDataLS();
+  }, []);
+  useEffect(() => {
+    getData();
+    // eslint-disable-next-line
+  }, [local]);
+
+  const editName = async (e) => {
+    e.preventDefault();
+    if (edit.length > 0) {
+      const editFullName = await axios.put(
+        `${BASE_URL}/edit/${local.result.email}`,
+
+        {
+          fullName: edit,
+          // newEmail:editEmail,
+          // phone:edit,
+          // status1:edit,
+        }
+      );
+      console.log(editFullName);
+      document.getElementById("username");
+      getData();
+    } else {
+      console.log("");
+    }
+  };
+  const kick = () => {
+    // eslint-disable-next-line
+    localStorage.clear();
+    navigate("/login");
+  };
+
+  return (
+    <div className="profile">
+      {account.map((item, i) => {
+        return (
+          <div>
+            <div className="navbar-top">
+              <div className="title">
+                <h1>Profile</h1>
+              </div>
+             
+              <ul>
+                <li>
+                  <a href="#message">
+                    <span className="icon-count">29</span>
+                    <i className="fa fa-envelope fa-2x" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#notification">
+                    <span className="icon-count">59</span>
+                    <i className="fa fa-bell fa-2x" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#sign-out">
+                    <i className="fa fa-sign-out-alt fa-2x" />
+                  </a>
+                </li>
+              </ul>
+            
+            </div>
+          
+            <div className="sidenav">
+              <div className="profile">
+                <img
+                  src="https://imdezcode.files.wordpress.com/2020/02/imdezcode-logo.png"
+                  alt=""
+                  width={100}
+                  height={100}
+                />
+                <div className="name">{item.fullName}</div>
+                <div className="job">Web Developer</div>
+              </div>
+              <div className="sidenav-url">
+                <div className="url">
+                  <a href="#profile" className="active">
+                    Profile
+                  </a>
+                  <hr align="center" />
+                </div>
+                <div className="url">
+                  <a href="#settings">Settings</a>
+                  <hr align="center" />
+                </div>
+              </div>
+            </div>
+
+            <div className="main">
+              <h2>PROFILE</h2>
+              <div className="card">
+                <div className="card-body">
+                  <i className="fa fa-pen fa-xs edit" />
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>{item.fullName}</td>
+                        <input type="submit" value="Changing name" onClick={editName} name="fullName"  className="show"/>
+                        <input type="text" placeholder="Changing You username" defaultValue={item.fullName} onChange={(e) => setEdit(e.target.value)} name="fullName" className="show"/>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td>:</td>
+                        <td>{item.email}</td>
+                        <input type="submit" value="Changing Email" onClick={editName} name="newEmail" className="show"/>
+                        <input type="text" placeholder="Changing Email" defaultValue={item.email} onChange={(e) => setEmail(e.target.value)} name="newEmail" className="show"/>
+                      </tr>
+                      <tr>
+                        <td>phone</td>
+                        <td>:</td>
+                        <td>{item.phone}</td>
+                      </tr>
+                      <tr>
+                        <td>status</td>
+                        <td>:</td>
+                        <td>{item.status1.status}</td>
+                      </tr>
+                      <tr>
+                        <td>Job</td>
+                        <td>:</td>
+                        <td>Web Developer</td>
+                      </tr>
+                      <tr>
+                        <td>Skill</td>
+                        <td>:</td>
+                        <td>PHP, HTML, CSS, Java</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
 
-export default ForgotPass;
+export default Profile;
+
