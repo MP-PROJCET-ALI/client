@@ -30,7 +30,11 @@ A doctor can spend medication and write reports with your medical file, and he c
  **logged out**
  Login out at the end of your tour inside the site, and after you've been briefed on the entire medical record, you can log out to keep your information private.
  
- 
+
+  ## Name: Health care System for Hostpital mangment
+ ➤ Short: HCSHM
+
+
  ## User Stories
  
  - **The user must have an account and be logged in if he wants to use the website features**
