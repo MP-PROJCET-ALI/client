@@ -37,7 +37,7 @@ useEffect(() => {
                 <Link to="/medicl">mediclDoctor</Link>
               </li></>:<></>}
               {user?.result?.role=='61c4981620623279b6c0768a'||user?.result?.role=='61c4660902f5af6c49d02a15'? <><li>
-                <Link to="/medicl">Doctors</Link>
+                <Link to="/Hospital">Hospital</Link>
               </li></>:<></>}
             </ul>
           </div>
