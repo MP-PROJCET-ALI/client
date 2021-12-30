@@ -75,12 +75,12 @@ const Medicalfile = () => {
                       <tr>
                         <td>Recipient</td>
                         <td>:</td>
-                        <td>{item.user}</td>
+                        <td>{item.user.fullName}</td>
                       </tr>
                       <tr>
                         <td>Named Doctor</td>
                         <td>:</td>
-                        <td>{item.DoctorId}</td>
+                        <td>{item.DoctorId.fullName}</td>
                       </tr>
                       <tr>
                         <td>Exchange Time</td>

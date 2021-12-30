@@ -10,6 +10,7 @@ import Activated from './components/Activated';
 import Profile from './components/Profile';
 import Medicalfile from './components/Medicalfile'
 import Hospital from './components/Hospital'
+import RegisterDoctor from './components/RegisterDoctor'
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route exact path='/login' element={<Login />}/>
         <Route exact path='/Hospital' element={<Hospital />}/>
         <Route exact path='/Doctorid' element={<Doctorid />}/>
+        <Route exact path='/register_doctor' element={<RegisterDoctor />}/>
         <Route exact path='/forgot/:token' element={<PasswordReset />}/>
         <Route exact path="/forgot" element={<Forget/>}/>
         <Route exact path="/activate/:token" element={<Activated/>}/>

@@ -8,7 +8,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState([])
 useEffect(() => {
-  setUser(JSON.parse(localStorage.getItem("user")));console.log(user);
+  setUser(JSON.parse(localStorage.getItem("user")));
 },[user])
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [err, setErr] = useState("");
@@ -67,6 +67,8 @@ useEffect(() => {
     <>
       <div className="login-wrap">
         <div className="login-html">
+          <label>Are you a doctor?</label>
+          <button onClick={()=>navigate('/Doctorid')}>Sign up here</button>
           <input
             id="tab-1"
             type="radio"
