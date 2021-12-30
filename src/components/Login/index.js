@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +6,10 @@ import { MdEmail } from "react-icons/md";
 // console.log(process.env.REACT_APP_BASE_URL);
 const Login = () => {
   const navigate = useNavigate();
-
+  const [user, setUser] = useState([])
+useEffect(() => {
+  setUser(JSON.parse(localStorage.getItem("user")));console.log(user);
+},[user])
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [err, setErr] = useState("");
   const login = async (e) => {
@@ -30,7 +33,7 @@ const Login = () => {
   };
 
   const signup = async (e) => {
-    console.log(e.target.email.value);
+    // console.log(e.target.email.value);
     try {
       // prevent default to tell form to not refresh the page when submitted
       e.preventDefault();
@@ -56,6 +59,10 @@ const Login = () => {
       console.log(error);
     }
   };
+  const Doctorid =  () => {
+   navigate("/Doctorid")
+  };
+
   return (
     <>
       <div className="login-wrap">
@@ -170,11 +177,12 @@ const Login = () => {
                   <select className="button">
                     <option value="Hospital">Hospital</option>
                     <option value="User">User</option>
-                    <option value="Doctor">Doctor</option>
+                    <option value="Doctor" to="/Doctorid" >Doctor</option>
                   </select>
                   <br />
                   <br />
                 </form>
+
                 <div className="group">
                   <button placeholder="send" className="button">
                     Sign Up
@@ -186,6 +194,7 @@ const Login = () => {
                 </div>
               </div>
             </form>
+         
           </div>
         </div>
       </div>
