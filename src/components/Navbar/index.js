@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import img1 from "../../imge/logo-removebg-preview.png"
+import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import "./style.css";
 import {GrLogin} from 'react-icons/gr'
 // navbar
 const NAVBAR = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState([])
 useEffect(() => {
-  setUser(JSON.parse(localStorage.getItem("user")));console.log(user);
-},[])
+  setUser(JSON.parse(localStorage.getItem("user")));
+},[user])
   return (
     <header className="navbar-header">
       <div className="container">
@@ -44,7 +47,7 @@ useEffect(() => {
           <div className="account-icons">
             <ul className="icons-list">
               {user ? (
-                <button className="logout-btn" onClick={()=>localStorage.removeItem("user")}>logout</button>
+                <button className="logout-btn" onClick={()=>{localStorage.removeItem("user"); navigate("/login")}}>logout</button>
               ) : (
                 
                 <li>
