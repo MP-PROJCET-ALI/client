@@ -1,0 +1,37 @@
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee:hover .marquee__item {
+    animation-play-state: paused;
+  }
+  .marquee__seperator {
+    margin: 0 2rem;
+  }
+  .marquee__item {
+    display: inline-block;
+    will-change: transform;
+    animation: marquee 100s linear infinite;
+  }
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-70%);
+    }
+  }
+  .show-img{
+    width: 15px;
+  }
+  .marquee {
+    background-color: red;
+    padding: 1rem 0;
+    color: #fff;
+    position:absolute;
+    margin-top: 45%;
+    height:60px;   /* Height of the footer */
+    
+  }
+  
