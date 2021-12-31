@@ -8,29 +8,24 @@ const DoctorId = () => {
   const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const [err, setErr] = useState("");
+  // const [err, setErr] = useState("");
 
   const signup = async (e) => {
     try {
       e.preventDefault();
-      const result = await axios.get(`${BASE_URL}/checkdoctor/${result._id}`, {
-        
-
+      const result = await axios.post(`${BASE_URL}/checkdoctor`, {
+        id: e.target.DoctorId.value,
       });
-      console.log(result._id,'1111111111111111111');
-      console.log(result.data,'2222222222222222222');
-
-      if (result.data.errors) {
-        console.log(result.data.errors[0].msg);
-        setErr(result.data.errors[0].msg);
-      } else if (result.data.message) {
-        setErr(result.data.message);
-        //   navigate("/login");
-        // if error set it to the useState and print it in the page
-        navigate("/home");
+      console.log(result.data);
+      if (result.data.DoctorId) {
+        navigate("/register_doctor", {
+          state: { doctorId: e.target.DoctorId.value },
+        });
       }
     } catch (error) {
-      console.log(error);
+      if (error) {
+        alert("wrong id");
+      }
     }
   };
 
@@ -43,25 +38,26 @@ const DoctorId = () => {
   const AddUsewr = async (e) => {
     try {
       e.preventDefault();
-      const result = await axios.put(`${BASE_URL}/editdoctor`, {
+      // console.log(e.target.password.value);
+      const result = await axios.post(`${BASE_URL}/adduser`, {
         fullName: e.target.username.value,
         email: e.target.email.value,
         password: e.target.password.value,
-        password2: e.target.password2.value,
+        phone: e.target.phone.value,
+        docID:"12345",
         patientId: e.target.patientId.value,
-        role: "61c46c8e02f5af6c49d02a17",
       });
       console.log(result.data);
 
-      if (result.data.errors) {
-        console.log(result.data.errors[0].msg);
-        setErr(result.data.errors[0].msg);
-      } else if (result.data.message) {
-        setErr(result.data.message);
-        //   navigate("/login");
-        // if error set it to the useState and print it in the page
-        navigate("/home");
-      }
+      // if (result.data.errors) {
+      //   console.log(result.data.errors[0].msg);
+      //   // setErr(result.data.errors[0].msg);
+      // } else if (result.data.message) {
+      //   // setErr(result.data.message);
+      //   //   navigate("/login");
+      //   // if error set it to the useState and print it in the page
+      //   navigate("/home");
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -80,16 +76,21 @@ const DoctorId = () => {
           <label htmlFor="tab-5" className="tab">
             DoctorId
           </label>
-          <input id="tab-2" type="radio" name="tab" className="sign-up" />
+          <input id="tab-2" type="radio" name="DoctorId" className="sign-up" />
           <label htmlFor="tab-2" className="tab"></label>
           <div className="login-form">
             <div className="sign-in-htm">
-              <form onChange={signup}>
+              <form onSubmit={signup}>
                 <div className="group" name="email">
                   <label htmlFor="email" className="label">
                     Id
                   </label>
-                  <input id="user" type="text" name="email" className="input" />
+                  <input
+                    id="user"
+                    type="text"
+                    name="DoctorId"
+                    className="input"
+                  />
                 </div>
 
                 <div className="group">
@@ -112,7 +113,7 @@ const DoctorId = () => {
                     Login
                   </button>
                 </div>
-                <p>{err}</p>
+                {/* <p>{err}</p> */}
               </form>
               <div className="hr" />
               <div className="foot-lnk">
@@ -144,7 +145,7 @@ const DoctorId = () => {
                     />
                   </div>
 
-                  <div className="group" name="password">
+                  <div className="group">
                     <label htmlFor="pass" className="label">
                       Password
                     </label>
@@ -186,7 +187,7 @@ const DoctorId = () => {
                 <div className="sign-up-htm">
                   <div className="group">
                     <label htmlFor="user" className="label">
-                      NewUsername
+                      Patient username
                     </label>
                     <input
                       id="user"
@@ -201,7 +202,7 @@ const DoctorId = () => {
                     </label>
                     <input
                       id="pass"
-                      name="Password1a"
+                      name="password"
                       type="password"
                       className="input"
                       data-type="password"
@@ -209,14 +210,13 @@ const DoctorId = () => {
                   </div>
                   <div className="group">
                     <label htmlFor="pass" className="label">
-                      Repeat Password
+                      phone{" "}
                     </label>
                     <input
                       id="pass"
-                      name="passwordaa2"
-                      type="password"
+                      type="text"
                       className="input"
-                      data-type="password"
+                      name="phone"
                     />
                   </div>
                   <div className="group">
@@ -243,8 +243,8 @@ const DoctorId = () => {
                     />
                   </div>
                   <div className="group">
-                    <button placeholder="send" className="button">
-                      Sign Up
+                    <button placeholder="send" className="button" type="submit">
+                      Add patient
                     </button>
                   </div>
                   <div className="hr" />
