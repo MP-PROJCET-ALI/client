@@ -3,6 +3,23 @@ import axios from "axios";
 import "./style.css";
 
 const  Hospital = () => {
+  
+const AddUsewr = async (e) => {
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  try {
+    e.preventDefault();
+    const result = await axios.post(`${BASE_URL}/newdoctor`, {
+      DoctorId: e.target.DoctorId.value,
+      rolr:"61c4983a20623279b6c0768c",
+      
+    });
+    console.log(result.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
     return (
         <>
         <div className="login-wrap">
@@ -23,37 +40,16 @@ const  Hospital = () => {
             </label>
             <div className="login-form">
               <div className="sign-in-htm">
-                <form >
-                  <div className="group" name="email">
+                <form onSubmit={AddUsewr} >
+                  <div className="group" name="DoctorId">
                     <label htmlFor="email" className="label">
                       email
                     </label>
-                    <input id="user" type="text" name="email" className="input" />
+                    <input id="user" type="text" name="DoctorId" className="input" />
                   </div>
   
-                  <div className="group" name="password">
-                    <label htmlFor="pass" className="label">
-                      Password
-                    </label>
-                    <input
-                      id="pass"
-                      type="password"
-                      name="password"
-                      className="input"
-                      data-type="password"
-                    />
-                  </div>
-                  <div className="group">
-                    <input
-                      id="check"
-                      type="checkbox"
-                      className="check"
-                      defaultChecked
-                    />
-                    <label htmlFor="check">
-                      <span className="icon" /> Keep me Signed in
-                    </label>
-                  </div>
+                  
+                 
                   <div className="group">
                     <button
                       type="submit"
