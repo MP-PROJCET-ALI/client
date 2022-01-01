@@ -8,7 +8,6 @@ const DoctorId = () => {
   const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  // const [err, setErr] = useState("");
 
   const signup = async (e) => {
     try {
@@ -38,26 +37,15 @@ const DoctorId = () => {
   const AddUsewr = async (e) => {
     try {
       e.preventDefault();
-      // console.log(e.target.password.value);
       const result = await axios.post(`${BASE_URL}/adduser`, {
         fullName: e.target.username.value,
         email: e.target.email.value,
         password: e.target.password.value,
         phone: e.target.phone.value,
-        docID:"12345",
+        docID: "12345",
         patientId: e.target.patientId.value,
       });
       console.log(result.data);
-
-      // if (result.data.errors) {
-      //   console.log(result.data.errors[0].msg);
-      //   // setErr(result.data.errors[0].msg);
-      // } else if (result.data.message) {
-      //   // setErr(result.data.message);
-      //   //   navigate("/login");
-      //   // if error set it to the useState and print it in the page
-      //   navigate("/home");
-      // }
     } catch (error) {
       console.log(error);
     }

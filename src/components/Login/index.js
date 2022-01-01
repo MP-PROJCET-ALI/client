@@ -9,7 +9,7 @@ const Login = () => {
   const [user, setUser] = useState([])
 useEffect(() => {
   setUser(JSON.parse(localStorage.getItem("user")));
-},[user])
+},[])
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [err, setErr] = useState("");
   const login = async (e) => {
@@ -52,7 +52,7 @@ useEffect(() => {
         setErr(result.data.errors[0].msg);
       } else if (result.data.message) {
         setErr(result.data.message);
-        //   navigate("/login");
+          navigate("/login");
         // if error set it to the useState and print it in the page
       }
     } catch (error) {
