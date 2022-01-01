@@ -11,6 +11,8 @@ import Profile from './components/Profile';
 import Medicalfile from './components/Medicalfile'
 import Hospital from './components/Hospital'
 import RegisterDoctor from './components/RegisterDoctor'
+import DoctorDoctor from './components/MediclDoctor'
+import About from './components/About'
 
 
 
@@ -20,6 +22,8 @@ function App() {
      <Navbar/>
      <Routes>
         <Route exact path="/" element={<Home/>}/>
+        <Route exact path="/About" element={<About/>}/>
+        <Route exact path="/MediclDoctor" element={<DoctorDoctor/>}/>
         <Route exact path='/login' element={<Login />}/>
         <Route exact path='/Hospital' element={<Hospital />}/>
         <Route exact path='/Doctorid' element={<Doctorid />}/>
