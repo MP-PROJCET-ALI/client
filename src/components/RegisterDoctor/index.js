@@ -11,7 +11,7 @@ const RegisterDoctor = () => {
       console.log(loc.state.doctorId);
     setUser(JSON.parse(localStorage.getItem("user")));
     console.log(user);
-  }, [user]);
+  }, []);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [err, setErr] = useState("");
 
@@ -36,6 +36,7 @@ console.log(result.data);
 
   return (
     <>
+    
       <div className="login-wrap">
         <div className="login-html">
           <input id="tab-1" type="radio" name="tab-1" className="sign-up" />
