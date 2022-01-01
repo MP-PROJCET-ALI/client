@@ -12,7 +12,7 @@ const NAVBAR = () => {
   const [user, setUser] = useState([])
 useEffect(() => {
   setUser(JSON.parse(localStorage.getItem("user")));
-},[user])
+},[])
   return (
     <header className="navbar-header">
       <div className="container">
@@ -28,7 +28,7 @@ useEffect(() => {
               </li>
            
               <li>
-                <Link to="/Aboutus">About</Link>
+                <Link to="/About">About</Link>
               </li>
               <li>
                 <Link to="/Profile">Profile</Link>
@@ -37,7 +37,7 @@ useEffect(() => {
                 <Link to="/Medicalfile">medicl</Link>
               </li>
               {user?.result?.role=='61c4983a20623279b6c0768c'||user?.result?.role=='61c4660902f5af6c49d02a15'? <><li>
-                <Link to="/medicl">mediclDoctor</Link>
+                <Link to="/MediclDoctor">mediclDoctor</Link>
               </li></>:<></>}
               {user?.result?.role=='61c4981620623279b6c0768a'||user?.result?.role=='61c4660902f5af6c49d02a15'? <><li>
                 <Link to="/Hospital">Hospital</Link>

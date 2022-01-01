@@ -24,6 +24,7 @@ a{color:inherit;text-decoration:none}
 	width:100%;
 	height:100%;
 	border-radius:20px;
+	/* margin-top: 20px; */
 	position:absolute;
 	padding:90px 70px 50px 70px;
 	background:rgb(66 95 172 / 90%);

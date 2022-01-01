@@ -36,19 +36,7 @@ const Medicalfile = () => {
         console.log(item.DoctorId.DoctorId);
         return (
           <div>
-            <div className="sidenav">
-              <div className="profile">
-                <img
-                  src="https://imdezcode.files.wordpress.com/2020/02/imdezcode-logo.png"
-                  alt=""
-                  width={100}
-                  height={100}
-                />
-                <div className="name">{item.medicalcondition}</div>
-                <div className="job">Web Developer</div>
-              </div>
-              <div className="sidenav-url"></div>
-            </div>
+           {/*  */}
 
             <div className="main">
               <h2>The Recipe</h2>

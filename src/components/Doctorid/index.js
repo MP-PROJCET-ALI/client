@@ -104,9 +104,7 @@ const DoctorId = () => {
                 {/* <p>{err}</p> */}
               </form>
               <div className="hr" />
-              <div className="foot-lnk">
-                <a href={"/forgot"}>Forgot Password?</a>
-              </div>
+             
             </div>
           </div>
         </div>
