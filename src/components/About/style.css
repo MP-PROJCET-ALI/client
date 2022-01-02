@@ -2,8 +2,8 @@
 
 .about-section{
     background: url(https://images.pexels.com/photos/4483327/pexels-photo-4483327.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) no-repeat left;
-    background-size: 65%;
-    margin-top: 13vh;
+    background-size: 75%;
+    margin-top: 1.2vh;
     background-color: #fdfdfd;
     overflow: hidden;
     padding: 100px 0;
@@ -23,7 +23,7 @@
 }
 
 .text{
-    font-size: 13px;
+    font-size: 20px;
     color: #545454;
     line-height: 30px;
     text-align: justify;

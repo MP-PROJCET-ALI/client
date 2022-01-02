@@ -3,13 +3,14 @@ import axios from "axios";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
+import NAVBAR from "../Navbar";
 // console.log(process.env.REACT_APP_BASE_URL);
 const Login = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState([])
-useEffect(() => {
-  setUser(JSON.parse(localStorage.getItem("user")));
-},[])
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("user")));
+  }, []);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [err, setErr] = useState("");
   const login = async (e) => {
@@ -23,7 +24,7 @@ useEffect(() => {
       console.log(result.data);
       if (result.data.result) {
         localStorage.setItem("user", JSON.stringify(result.data));
-        navigate("/home");
+        navigate("/");
       } else {
         console.log("wrong");
       }
@@ -52,23 +53,25 @@ useEffect(() => {
         setErr(result.data.errors[0].msg);
       } else if (result.data.message) {
         setErr(result.data.message);
-          navigate("/login");
+        navigate("/login");
+        console.log(result.data.errors[0].msg);
+
         // if error set it to the useState and print it in the page
       }
     } catch (error) {
       console.log(error);
     }
   };
-  const Doctorid =  () => {
-   navigate("/Doctorid")
+  const Doctorid = () => {
+    navigate("/Doctorid");
   };
-
   return (
     <>
+    <NAVBAR/>
       <div className="login-wrap">
         <div className="login-html">
           <label>Are you a doctor?</label>
-          <button onClick={()=>navigate('/Doctorid')}>Sign up here</button>
+          <button onClick={() => navigate("/Doctorid")}>Sign up here</button>
           <input
             id="tab-1"
             type="radio"
@@ -116,6 +119,7 @@ useEffect(() => {
                     <span className="icon" /> Keep me Signed in
                   </label>
                 </div>
+
                 <div className="group">
                   <button
                     type="submit"
@@ -179,7 +183,9 @@ useEffect(() => {
                   <select className="button">
                     <option value="Hospital">Hospital</option>
                     <option value="User">User</option>
-                    <option value="Doctor" to="/Doctorid" >Doctor</option>
+                    <option value="Doctor" to="/Doctorid">
+                      Doctor
+                    </option>
                   </select>
                   <br />
                   <br />
@@ -196,7 +202,6 @@ useEffect(() => {
                 </div>
               </div>
             </form>
-         
           </div>
         </div>
       </div>

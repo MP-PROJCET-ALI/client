@@ -44,7 +44,7 @@
 
   @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&display=swap');
 :root {
-  --blue: #131661;
+  --blue: #983333;
   --grey: #ecebee;
   --grey2: #bfbfbf;
   --pink: #15227c;
@@ -166,7 +166,7 @@ input[type="checkbox"]:checked + div + div .stage_inner__right .link {
 .stage_inner {
   position: absolute;
   left: 0;
-  height: 580px;
+  height: 700px;
   right: 0;
   box-shadow: 0px 18px 43px -18px rgba(30, 31, 38, 0.2117647059);
   margin: auto;
@@ -238,7 +238,7 @@ input[type="checkbox"]:checked + div + div .stage_inner__right .link {
 .stage_inner__article {
   position: absolute;
   width: 50%;
-  left: 25%;
+  left: 24%;
   padding: 30px 80px 30px 30px;
 }
 .stage_inner__article h2 {
@@ -273,7 +273,7 @@ input[type="checkbox"]:checked + div + div .stage_inner__right .link {
 .stage_inner__articleTwo {
   position: absolute;
   width: 350px;
-  left: calc(60% + 120px);
+  left: calc(60% + 300px);
   padding: 150px 80px 30px 0px;
 }
 .stage_inner__articleTwo h2 {
@@ -390,7 +390,7 @@ input[type="checkbox"]:checked + div + div .stage_inner__right .link {
 }
 .stage_inner p.date {
   color: var(--grey2);
-  font-size: 10px;
+  font-size: 15px;
 }
 .stage_inner a {
   color: var(--blue);

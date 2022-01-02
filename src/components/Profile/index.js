@@ -12,13 +12,9 @@ const Profile = () => {
   const [editEmail, setEmail] = useState("");
 
   const getData = async () => {
-    if (local.result) {
       const item = await axios.get(`${BASE_URL}/email/${local.result.email}`);
-
+      console.log(item.data);
       setAccount(item.data);
-    } else {
-      // navigate('/home')
-    }
   };
 
   const getDataLS = () => {
@@ -90,6 +86,11 @@ const Profile = () => {
                         <td>status</td>
                         <td>:</td>
                         <td>{item.status1.status}</td>
+                      </tr>
+                      <tr>
+                        <td>workAt</td>
+                        <td>:</td>
+                        <td>{item?.workAt?.fullName}</td>
                       </tr>
                     </tbody>
                   </table>

@@ -6,7 +6,7 @@ body{
     position: relative;
 }
 .logo{
-    width: 59px;
+    width: 23px;
 
 }
 .navbar-header{
@@ -29,10 +29,11 @@ li{
     width: 100%;
 }
 .grid-nav{
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    align-items: center;
-    justify-items: center;
+       display: grid;
+    grid-template-columns: 1fr 32fr 1fr;
+    justify-items: end;
+    justify-content: space-between;
+    align-items: baseline;
 }
 .navbar-header ul{
     display: flex;
@@ -46,7 +47,7 @@ li{
 .routes ul a{
     padding: 0.4rem 2.2rem;
     border-radius: 0.6rem;
-    color: darkred;
+    color: #15227C;
     transition: all 300ms;
     position: relative;
 }
@@ -57,7 +58,7 @@ li{
     content: "";
     width: 0;
     height: 1px;
-    background: orangered;
+    background: rgb(0, 0, 0);
     transition: all 300ms;
     transform-origin: left;
 }
@@ -65,7 +66,7 @@ li{
     width: 100%;
 }
 .routes ul a:hover{
-    color: orangered;
+    color: rgb(0, 0, 0);
 }
 
 
