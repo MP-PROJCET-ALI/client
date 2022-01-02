@@ -17,7 +17,7 @@ const Doctor = () => {
         patientscondition: e.target.patientscondition.value,
         desc: e.target.desc.value,
         user: "61c9773f51adae120e611aea",
-        DoctorId: "61c975d351adae120e611ade",
+        DoctorId: "61c9761551adae120e611ae4",
       });
       console.log(result.data);
     } catch (error) {
@@ -47,19 +47,44 @@ const Doctor = () => {
     }
   };
 
+  const serch = async () => {
+    try {
+      const result = await axios.post(`${BASE_URL}/search`, {
+        patientId: searched,
+      });
+      console.log(result.data);
+      localStorage.setItem('searched', result.data._id)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+const [searched, setSearched] = useState("")
+useEffect(() => {
+  console.log(searched);
+}, [searched])
   useEffect(() => {
     AddUsewr();
   }, []);
   return (
     <>
+       <>
+    
+    <div className="box">
+        <form name="search">
+          <input type="text" className="input-sh" name="txt" onmouseout="document.search.txt.value = ''" onChange={(e)=>setSearched(e.target.value)}/> <span onClick={()=>serch()} className="deff"> Search </span>
+        </form>
+      </div>
+
+    </>
+
       <div>
         <div className="container">
           <form className="contact" action method="post" onSubmit={AddUPatient}>
-            <h3>JOb ADDD Survey Form</h3>
+            <h3>Prescription</h3>
             <div className="col50 colleft">
               <div className="col50 colleft">
                 <div className="wd50">
-                  <label name>Patient name</label>
+                  <label name>Patient Name</label>
                   <input
                     placeholder="Patient name"
                     name="user"
@@ -69,9 +94,9 @@ const Doctor = () => {
                   />
                 </div>
                 <div className="wd50">
-                  <label name>pharmaceutical</label>
+                  <label name>Pharmaceutical</label>
                   <input
-                    placeholder="pharmaceutical"
+                    placeholder="Pharmaceutical"
                     type="text"
                     name="pharmaceutical"
                     required
@@ -80,10 +105,10 @@ const Doctor = () => {
               </div>
               <div className="col50 colright">
                 <div className="wd50">
-                  <label name> patientscondition</label>
+                  <label name> Patients Condition</label>
                   <input
                    name="patientscondition"
-                    placeholder=" patientscondition"
+                    placeholder=" Patients Condition"
                     type="text"
                     required
                   />
@@ -99,8 +124,8 @@ const Doctor = () => {
               </div>
               <div className="col50 colright">
                 <div className="wd50">
-                  <label name>desc</label>
-                  <input placeholder="Clinic visited" type="text" name="desc" required />
+                  <label name>Description</label>
+                  <input placeholder="Description" type="text" name="desc" required />
                 </div>
               </div>
             </div>
@@ -117,86 +142,76 @@ const Doctor = () => {
         </div>
       </div>
       <>
-        <div className="login-wrap">
-          <div className="login-html">
-            <input id="tab-7" type="radio" name="tab-7" className="sign-up" />
-            <label htmlFor="tab-7" className="tab">
-              patient
-            </label>
-            <div className="login-form">
-              <form onSubmit={AddUsewr}>
-                <div className="sign-up-htm">
-                  <div className="group">
-                    <label htmlFor="user" className="label">
-                      Patient username
-                    </label>
-                    <input
-                      id="user"
-                      type="text"
-                      name="username"
-                      className="input"
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">
-                      Password
-                    </label>
-                    <input
-                      id="pass"
-                      name="password"
-                      type="password"
-                      className="input"
-                      data-type="password"
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">
-                      phone{" "}
-                    </label>
-                    <input
-                      id="pass"
-                      type="text"
-                      className="input"
-                      name="phone"
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">
-                      Email Address
-                    </label>
-                    <input
-                      id="pass"
-                      type="text"
-                      className="input"
-                      name="email"
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">
-                      patientId
-                    </label>
-                    <input
-                      id="pass"
-                      name="patientId"
-                      type="patientId"
-                      className="input"
-                      data-type="password"
-                    />
-                  </div>
-                  <div className="group">
-                    <button placeholder="send" className="button" type="submit">
-                      Add patient
-                    </button>
-                  </div>
-                  <div className="hr" />
+      <div>
+        <div className="container">
+          <form className="contact-1" action method="post" onSubmit={AddUsewr}>
+            <h3>patient</h3>
+            <div className="col50 colleft">
+              <div className="col50 colleft">
+                <div className="wd50">
+                  <label > Patient FullName</label>
+                  <input
+                    placeholder="username"
+                    name="username"
+                    type="text"
+                    required
+                    autofocus
+                  />
                 </div>
-              </form>
+                <div className="wd50">
+                  <label name>Password</label>
+                  <input
+                    placeholder="Pharmaceutical"
+                    type="text"
+                    name="password"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="col50 colright">
+                <div className="wd50">
+                  <label > phone{" "}</label>
+                  <input
+                   name="phone"
+                    placeholder=" Patients Condition"
+                    type="text"
+                    required
+                  />
+                </div>
+              </div>
             </div>
-          </div>
+            <div className="col50 colright">
+              <div className="col50 colleft">
+                <div className="wd50">
+                  <label name>Email</label>
+                  <input placeholder="email"  name="email" type="img" />
+                </div>
+              </div>
+              <div className="col50 colright">
+                <div className="wd50">
+                  <label name>PatientId</label>
+                  <input placeholder="patientId" type="text" name="patientId" required />
+                </div>
+              </div>
+            </div>
+            <div className="wd100">
+              <hr />
+            </div>
+
+            <div className="wd100">
+              <button name="submit" type="submit" id data-submit="...Sending">
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
+      </div>
       </>
     </>
   );
 };
+
+
+
 
 export default Doctor;

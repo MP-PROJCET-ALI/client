@@ -7,83 +7,105 @@ const Medicalfile = () => {
 
   const [medical, setMedical] = useState([]);
   console.log(JSON.parse(localStorage.getItem("user")).result._id);
+
+  const found = localStorage.getItem("searched")
+    ? localStorage.getItem("searched")
+    : JSON.parse(localStorage.getItem("user")).result._id;
   const getPosts = () => {
     try {
-      axios
-        .get(
-          `${BASE_URL}/filemodel/${
-            JSON.parse(localStorage.getItem("user")).result._id
-          }`
-        )
-        .then((result) => {
-          if (result.data) {
-            console.log(result.data);
-            setMedical(result.data);
-          }
-        });
+      console.log('hhhhh');
+      axios.get(`${BASE_URL}/filemodel/${found}`).then((result) => {
+        console.log(result.data);
+        if (result.data) {
+          setMedical(result.data);
+        }
+      });
     } catch (error) {
       console.log(error);
     }
   };
+
+  const deletePost = (i) => {
+    console.log(i);
+    try {
+      axios.put(`${BASE_URL}/softDelete/${i}`).then((result) => {
+        console.log(result.data);
+        getPosts();
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   useEffect(() => {
     getPosts();
   }, []);
 
   return (
-    <div className="profile">
-      {medical.map((item, i) => {
-        console.log(item.DoctorId.DoctorId);
-        return (
-          <div>
-           {/*  */}
+    <>
+      <div className="profile">
+        {medical.map((item, i) => {
+          console.log(item.DoctorId.DoctorId);
+          return (
+            <div>
+              {/*  */}
 
-            <div className="main">
-              <h2>The Recipe</h2>
-              <div className="card">
-                <div className="card-body">
-                  <i className="fa fa-pen fa-xs edit" />
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>Title</td>
-                        <td>:</td>
-                        <td>{item.pharmaceutical}</td>
-                      </tr>
-                      <tr>
-                        <td>Formula</td>
-                        <td>:</td>
-                        <td>{item.desc}</td>
-                      </tr>
-                      <tr>
-                        <td>Treatment casing</td>
-                        <td>:</td>
-                        <td>{item.img}</td>
-                      </tr>
-                      <tr>
-                        <td>Recipient</td>
-                        <td>:</td>
-                        <td>{item.user.fullName}</td>
-                      </tr>
-                      <tr>
-                        <td>Named Doctor</td>
-                        <td>:</td>
-                        <td>{item.DoctorId.fullName}</td>
-                      </tr>
-                      <tr>
-                        <td>Exchange Time</td>
-                        <td>:</td>
-                        <td>{item.time}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+              <div className="main">
+                <h2>Prescription</h2>
+                <div className="card">
+                  <div className="card-body">
+                    <i className="fa fa-pen fa-xs edit" />
+                    {localStorage.getItem("searched")?<button onClick={() => deletePost(item._id)}>Delete</button> :<></>}
+                    {localStorage.getItem("searched")?<button>Edit</button> :<></>}
+                    
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>Treatment Name</td>
+                          <td>:</td>
+                          <td>{item.pharmaceutical}</td>
+                        </tr>
+                        <tr>
+                          <td>Dosage</td>
+                          <td>:</td>
+                          <td>{item.desc}</td>
+                        </tr>
+                        <tr>
+                          <td>Treatment casing</td>
+                          <td>:</td>
+                          <td>{item.img}</td>
+                        </tr>
+                        <tr>
+                          <td>Recipient</td>
+                          <td>:</td>
+                          <td>{item.user.fullName}</td>
+                        </tr>
+                        <tr>
+                          <td>Doctor's Name</td>
+                          <td>:</td>
+                          <td>{item.DoctorId.fullName}</td>
+                        </tr>
+                        <tr>
+                          <td>Exchange Time</td>
+                          <td>:</td>
+                          <td>{item.time}</td>
+                        </tr>
+                        <tr>
+                          <td>workAt</td>
+                          <td>:</td>
+                          <td>{item.DoctorId.workAt.fullName}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 
