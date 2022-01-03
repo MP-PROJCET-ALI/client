@@ -42,8 +42,36 @@ const Medicalfile = () => {
     getPosts();
   }, []);
 
+  const serch = async () => {
+    try {
+      const result = await axios.post(`${BASE_URL}/search`, {
+        patientId: searched,
+      });
+      console.log(result.data);
+      localStorage.setItem('searched', result.data._id)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const [searched, setSearched] = useState("")
+useEffect(() => {
+  console.log(searched);
+}, [searched])
+
+
   return (
     <>
+       <>
+       {medical?.result?.role=='61c4983a20623279b6c0768c'? <>
+       <div className="box">
+        <form name="search">
+          <input type="text" className="input-sh" name="txt" onmouseout="document.search.txt.value = ''" onChange={(e)=>setSearched(e.target.value)}/> <span onClick={()=>serch()} className="deff"> Search </span>
+        </form>
+      </div>
+              </>:<></>}
+ 
+
+    </>
       <div className="profile">
         {medical.map((item, i) => {
           console.log(item.DoctorId.DoctorId);

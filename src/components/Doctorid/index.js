@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import "./style.css";
-
+import Swal from "sweetalert2"
 const DoctorId = () => {
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const DoctorId = () => {
       }
     } catch (error) {
       if (error) {
-        alert("wrong id");
+        Swal.fire('ID is wrong please check')
       }
     }
   };
@@ -62,7 +62,7 @@ const DoctorId = () => {
             defaultChecked
           />
           <label htmlFor="tab-5" className="tab">
-            DoctorId
+            Doctor Id
           </label>
           <input id="tab-2" type="radio" name="DoctorId" className="sign-up" />
           <label htmlFor="tab-2" className="tab"></label>
