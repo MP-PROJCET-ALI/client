@@ -4,6 +4,8 @@ import "./style.css";
 import { useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import NAVBAR from "../Navbar";
+import Swal from "sweetalert2"
+
 // console.log(process.env.REACT_APP_BASE_URL);
 const Login = () => {
   const navigate = useNavigate();
@@ -13,6 +15,8 @@ const Login = () => {
   }, []);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [err, setErr] = useState("");
+
+
   const login = async (e) => {
     console.log(e.target.email.value);
     try {
@@ -21,11 +25,19 @@ const Login = () => {
         email: e.target.email.value,
         password: e.target.password.value,
       });
-      console.log(result.data);
+     
       if (result.data.result) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
         localStorage.setItem("user", JSON.stringify(result.data));
         navigate("/");
       } else {
+        Swal.fire('Please make sure your password and email')
         console.log("wrong");
       }
     } catch (error) {
@@ -70,8 +82,7 @@ const Login = () => {
     <NAVBAR/>
       <div className="login-wrap">
         <div className="login-html">
-          <label>Are you a doctor?</label>
-          <button onClick={() => navigate("/Doctorid")}>Sign up here</button>
+        
           <input
             id="tab-1"
             type="radio"
@@ -130,6 +141,11 @@ const Login = () => {
                   </button>
                 </div>
               </form>
+              <div className="group">
+              <label>Are you a doctor?</label>
+          <button onClick={() => navigate("/Doctorid")}  type="submit"
+                    className="button" >Sign up here</button>
+          </div>
               <div className="hr" />
               <div className="foot-lnk">
                 <a href={"/forgot"}>Forgot Password?</a>

@@ -166,9 +166,9 @@ input[type="checkbox"]:checked + div + div .stage_inner__right .link {
 .stage_inner {
   position: absolute;
   left: 0;
-  height: 700px;
+  height: 686px;
   right: 0;
-  box-shadow: 0px 18px 43px -18px rgba(30, 31, 38, 0.2117647059);
+  box-shadow: 0px 18px 43px -18px rgb(30 31 38 / 21%);
   margin: auto;
   top: 50%;
   transform: translateY(-50%);
@@ -200,7 +200,7 @@ input[type="checkbox"]:checked + div + div .stage_inner__right .link {
 .stage_inner__list li {
   list-style-type: none;
   text-transform: uppercase;
-  margin: 30px 0;
+  margin: 56px 0;
   font-size: 12px;
 }
 .stage_inner__list li:nth-of-type(2) {

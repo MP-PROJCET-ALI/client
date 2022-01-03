@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2"
 const RegisterDoctor = () => {
   const navigate = useNavigate();
   const loc = useLocation();
@@ -29,7 +29,8 @@ console.log(result.data);
           navigate("/login");
       }
     } catch (error) {
-        alert('wrong registeration info')
+        // alert('wrong registeration info')
+        Swal.fire('Any fool can use a computer')
       console.log(error);
     }
   };
