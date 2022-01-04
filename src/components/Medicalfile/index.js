@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./style.css";
+import NAVBAR from "../Navbar";
+
 
 const Medicalfile = () => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -24,7 +26,7 @@ const Medicalfile = () => {
       console.log(error);
     }
   };
-
+// delete
   const deletePost = (i) => {
     console.log(i);
     try {
@@ -37,11 +39,33 @@ const Medicalfile = () => {
     }
   };
 
+  // updeate
+
+  // const editName = async (e) => {
+  //   e.preventDefault();
+  //   if (edit.length > 0) {
+  //     const editFullName = await axios.put(
+  //       `${BASE_URL}/updatefilemodel/${_id}`,
+
+  //       {
+  //         fullName: edit,
+  //         newEmail:editEmail,
+  //         phone:edit,
+  //         status1:edit,
+  //       }
+  //     );
+  //     console.log(editFullName);
+  //     document.getElementById("username");
+  //     getData();
+  //   } else {
+  //     console.log("");
+  //   }
+  // };
 
   useEffect(() => {
     getPosts();
   }, []);
-
+// search 
   const serch = async () => {
     try {
       const result = await axios.post(`${BASE_URL}/search`, {
@@ -61,6 +85,8 @@ useEffect(() => {
 
   return (
     <>
+    <NAVBAR/>
+
        <>
        {medical?.result?.role=='61c4983a20623279b6c0768c'? <>
        <div className="box">
@@ -76,6 +102,7 @@ useEffect(() => {
         {medical.map((item, i) => {
           console.log(item.DoctorId.DoctorId);
           return (
+
             <div>
               {/*  */}
 
@@ -99,11 +126,11 @@ useEffect(() => {
                           <td>:</td>
                           <td>{item.desc}</td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                           <td>Treatment casing</td>
                           <td>:</td>
                           <td>{item.img}</td>
-                        </tr>
+                        </tr> */}
                         <tr>
                           <td>Recipient</td>
                           <td>:</td>
@@ -119,11 +146,7 @@ useEffect(() => {
                           <td>:</td>
                           <td>{item.time}</td>
                         </tr>
-                        <tr>
-                          <td>workAt</td>
-                          <td>:</td>
-                          <td>{item.DoctorId.workAt.fullName}</td>
-                        </tr>
+                      
                       </tbody>
                     </table>
                   </div>

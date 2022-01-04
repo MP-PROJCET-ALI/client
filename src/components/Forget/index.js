@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
+import NAVBAR from "../Navbar";
 
 const Forget = () => {
   const navigate = useNavigate();
@@ -26,6 +27,9 @@ const Forget = () => {
   };
 
   return (
+    <>
+        <NAVBAR/>
+
     <div className="login-wrap">
       <div className="login-html">
         <input
@@ -80,6 +84,7 @@ const Forget = () => {
         </div>
       </div>
     </div>
+    </>
   
   );
 };

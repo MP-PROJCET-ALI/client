@@ -44,7 +44,7 @@ useEffect(() => {
                 
               
               {user?.result?.role=='61c4983a20623279b6c0768c'||user?.result?.role=='61c4660902f5af6c49d02a15'? <><li>
-                <Link to="/MediclDoctor">MedicalDoctor</Link>
+                <Link to="/MediclDoctor">Medical Doctor</Link>
               </li></>:<></>}
               {user?.result?.role=='61c4981620623279b6c0768a'||user?.result?.role=='61c4660902f5af6c49d02a15'? <><li>
                 <Link to="/Hospital">Hospital</Link>

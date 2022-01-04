@@ -1,9 +1,12 @@
 import React from 'react'
 import './style.css'
+import NAVBAR from "../Navbar";
 
 const About = () => {
     return (
-       
+       <>
+           <NAVBAR/>
+
       <div className="about-section">
       <div className="inner-container">
         <h1>About Us</h1>
@@ -13,6 +16,7 @@ const About = () => {
      
       </div>
     </div>
+    </>
     )
 }
 

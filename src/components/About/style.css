@@ -3,7 +3,7 @@
 .about-section{
     background: url(https://images.pexels.com/photos/4483327/pexels-photo-4483327.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) no-repeat left;
     background-size: 75%;
-    margin-top: 1.2vh;
+    /* margin-top: 1.2vh; */
     background-color: #fdfdfd;
     overflow: hidden;
     padding: 100px 0;
