@@ -38,7 +38,8 @@ const Login = () => {
         navigate("/");
       } else {
         Swal.fire('Please make sure your password and email')
-        console.log("wrong");
+        setErr(result.data);
+
       }
     } catch (error) {
       console.log(error);
@@ -56,7 +57,7 @@ const Login = () => {
         email: e.target.email.value,
         password: e.target.Password1a.value,
         password2: e.target.passwordaa2.value,
-        role: "61a4eae86ad0c2fe2b45d0aa",
+        role: e.target.role.value,
       });
 
       // if register is successful navigate to login page g
@@ -139,6 +140,7 @@ const Login = () => {
                   >
                     Login
                   </button>
+                  <p>{err}</p>
                 </div>
               </form>
               <div className="group">
@@ -194,18 +196,18 @@ const Login = () => {
                   </label>
                   <input id="pass" type="text" className="input" name="email" />
                 </div>
-                <form action="/action_page.php" className="group">
-                  <label htmlFor="cars">Choose :</label>
-                  <select className="button">
-                    <option value="Hospital">Hospital</option>
-                    <option value="User">User</option>
-                    <option value="Doctor" to="/Doctorid">
+                <div className="group">
+                  <label>Choose :</label>
+                  <select className="button" name="role">
+                    <option value="61c4981620623279b6c0768a">Hospital</option>
+                    <option value="61c46c8e02f5af6c49d02a17 ">User</option>
+                    <option value="61c4983a20623279b6c0768c">
                       Doctor
                     </option>
                   </select>
                   <br />
                   <br />
-                </form>
+                </div>
 
                 <div className="group">
                   <button placeholder="send" className="button">

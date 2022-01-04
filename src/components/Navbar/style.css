@@ -10,7 +10,7 @@ body{
 
 }
 .navbar-header{
-    position: fixed;
+    /* position: ap; */
     top: 0;
     left: 0;
     width: 100%;

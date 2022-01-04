@@ -3,11 +3,29 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import "./style.css";
+import NAVBAR from "../Navbar";
+
 
 const Doctor = () => {
   const navigate = useNavigate();
+  const [searched, setSearched] = useState("");
+  const [patients, setPatients] = useState([]);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  console.log(JSON.parse(localStorage.getItem("user")));
+
+  const getPatientsForDoctor = async () => {
+    console.log(JSON.parse(localStorage.getItem("user")).result.DoctorId);
+    try {
+      const result = await axios.post(`${BASE_URL}/gerusers/${JSON.parse(localStorage.getItem("user")).result.DoctorId}`);
+      console.log(result.data[0]);
+      setPatients(result.data[0].patients)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   const AddUPatient = async (e) => {
     try {
@@ -16,8 +34,8 @@ const Doctor = () => {
         pharmaceutical: e.target.pharmaceutical.value,
         patientscondition: e.target.patientscondition.value,
         desc: e.target.desc.value,
-        user: "61c9773f51adae120e611aea",
-        DoctorId: "61c9761551adae120e611ae4",
+        user:e.target.user.value,
+        DoctorId: JSON.parse(localStorage.getItem("user")).result._id,
       });
       console.log(result.data);
     } catch (error) {
@@ -38,7 +56,7 @@ const Doctor = () => {
         email: e.target.email.value,
         password: e.target.password.value,
         phone: e.target.phone.value,
-        docID: "12345",
+        docID: JSON.parse(localStorage.getItem("user")).result.DoctorId,
         patientId: e.target.patientId.value,
       });
       console.log(result.data);
@@ -53,30 +71,85 @@ const Doctor = () => {
         patientId: searched,
       });
       console.log(result.data);
-      localStorage.setItem('searched', result.data._id)
+      localStorage.setItem("searched", result.data._id);
     } catch (error) {
       console.log(error);
     }
   };
-const [searched, setSearched] = useState("")
-useEffect(() => {
-  console.log(searched);
-}, [searched])
   useEffect(() => {
-    AddUsewr();
+    console.log(searched);
+  }, [searched]);
+  useEffect(() => {
+    getPatientsForDoctor()
   }, []);
   return (
     <>
-       <>
-    
-    <div className="box">
-        <form name="search">
-          <input type="text" className="input-sh" name="txt" onmouseout="document.search.txt.value = ''" onChange={(e)=>setSearched(e.target.value)}/> <span onClick={()=>serch()} className="deff"> Search </span>
-        </form>
-      </div>
+        <NAVBAR/>
 
-    </>
+      <>
+        <div className="box">
+          <form name="search">
+            <input
+              type="text"
+              className="input-sh"
+              name="txt"
+              onmouseout="document.search.txt.value = ''"
+              onChange={(e) => setSearched(e.target.value)}
+            />{" "}
+            <span onClick={() => serch()} className="deff">
+              {" "}
+              Search{" "}
+            </span>
+          </form>
+        </div>
+      </>
+      {patients.map((item, i) => {
+        return (
+         <table>
+            <div>
+              <div className="boxContiner-1">
+                <div className="boxBody-1">
+                  <div className="card-12">
+                    <div className="profileImage-12" />
+                    
 
+                    <div className="nameFamily-12">
+                      <h1>Reviewers Card</h1>
+                      <td>FullName</td>
+                      <td>:</td>
+                      <td>{item.fullName}</td>
+                    </div>
+                    <div className="nameFamily-12">
+                      <td>Email</td>
+                      <td>:</td>
+                      <td>{item.email}</td>
+                    </div>
+                    <div className="nameFamily-12">
+                      <td>Phone</td>
+                      <td>:</td>
+                      <td>{item.phone}</td>
+                    </div>
+
+                    <div className="nameFamily-12">
+                      <td>Patient Id</td>
+                      <td>:</td>
+                      <td>{item.patientId}</td>
+                    </div>
+                    
+
+                    <div className="socialMedia">
+                      <div className="mail"></div>
+
+                      <div className="linkdin"></div>
+                      <div className="phone"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </table>
+         
+        )})}
       <div>
         <div className="container">
           <form className="contact" action method="post" onSubmit={AddUPatient}>
@@ -84,7 +157,7 @@ useEffect(() => {
             <div className="col50 colleft">
               <div className="col50 colleft">
                 <div className="wd50">
-                  <label name>Patient Name</label>
+                  <label name>Patient Id</label>
                   <input
                     placeholder="Patient name"
                     name="user"
@@ -107,7 +180,7 @@ useEffect(() => {
                 <div className="wd50">
                   <label name> Patients Condition</label>
                   <input
-                   name="patientscondition"
+                    name="patientscondition"
                     placeholder=" Patients Condition"
                     type="text"
                     required
@@ -118,14 +191,19 @@ useEffect(() => {
             <div className="col50 colright">
               <div className="col50 colleft">
                 <div className="wd50">
-                  <label name>DoctorId</label>
-                  <input placeholder="DoctorId"  name="DoctorId" type="img" />
+                  <label name>Doctor Id</label>
+                  <input placeholder="DoctorId" name="DoctorId" type="img" />
                 </div>
               </div>
               <div className="col50 colright">
                 <div className="wd50">
                   <label name>Description</label>
-                  <input placeholder="Description" type="text" name="desc" required />
+                  <input
+                    placeholder="Description"
+                    type="text"
+                    name="desc"
+                    required
+                  />
                 </div>
               </div>
             </div>
@@ -142,76 +220,83 @@ useEffect(() => {
         </div>
       </div>
       <>
-      <div>
-        <div className="container">
-          <form className="contact-1" action method="post" onSubmit={AddUsewr}>
-            <h3>patient</h3>
-            <div className="col50 colleft">
+        <div>
+          <div className="container">
+            <form
+              className="contact-1"
+              action
+              method="post"
+              onSubmit={AddUsewr}
+            >
+              <h3>patient</h3>
               <div className="col50 colleft">
-                <div className="wd50">
-                  <label > Patient FullName</label>
-                  <input
-                    placeholder="username"
-                    name="username"
-                    type="text"
-                    required
-                    autofocus
-                  />
+                <div className="col50 colleft">
+                  <div className="wd50">
+                    <label> Patient FullName</label>
+                    <input
+                      placeholder="username"
+                      name="username"
+                      type="text"
+                      required
+                      autofocus
+                    />
+                  </div>
+                  <div className="wd50">
+                    <label name>Password</label>
+                    <input
+                      placeholder="Pharmaceutical"
+                      type="text"
+                      name="password"
+                      required
+                    />
+                  </div>
                 </div>
-                <div className="wd50">
-                  <label name>Password</label>
-                  <input
-                    placeholder="Pharmaceutical"
-                    type="text"
-                    name="password"
-                    required
-                  />
+                <div className="col50 colright">
+                  <div className="wd50">
+                    <label> phone </label>
+                    <input
+                      name="phone"
+                      placeholder=" Patients Condition"
+                      type="text"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
               <div className="col50 colright">
-                <div className="wd50">
-                  <label > phone{" "}</label>
-                  <input
-                   name="phone"
-                    placeholder=" Patients Condition"
-                    type="text"
-                    required
-                  />
+                <div className="col50 colleft">
+                  <div className="wd50">
+                    <label name>Email</label>
+                    <input placeholder="email" name="email" type="img" />
+                  </div>
+                </div>
+                <div className="col50 colright">
+                  <div className="wd50">
+                    <label name>PatientId</label>
+                    <input
+                      placeholder="patientId"
+                      type="text"
+                      name="patientId"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col50 colright">
-              <div className="col50 colleft">
-                <div className="wd50">
-                  <label name>Email</label>
-                  <input placeholder="email"  name="email" type="img" />
-                </div>
+              <div className="wd100">
+                <hr />
               </div>
-              <div className="col50 colright">
-                <div className="wd50">
-                  <label name>PatientId</label>
-                  <input placeholder="patientId" type="text" name="patientId" required />
-                </div>
-              </div>
-            </div>
-            <div className="wd100">
-              <hr />
-            </div>
 
-            <div className="wd100">
-              <button name="submit" type="submit" id data-submit="...Sending">
-                Submit
-              </button>
-            </div>
-          </form>
+              <div className="wd100">
+                <button name="submit" type="submit" id data-submit="...Sending">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
       </>
     </>
   );
 };
-
-
-
 
 export default Doctor;

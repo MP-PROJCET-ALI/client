@@ -166,7 +166,7 @@ input[type="checkbox"]:checked + div + div .stage_inner__right .link {
 .stage_inner {
   position: absolute;
   left: 0;
-  height: 686px;
+  height: 763px;
   right: 0;
   box-shadow: 0px 18px 43px -18px rgb(30 31 38 / 21%);
   margin: auto;

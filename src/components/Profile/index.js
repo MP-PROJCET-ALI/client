@@ -3,6 +3,8 @@ import axios from "axios";
 import "./style.css";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
+import NAVBAR from "../Navbar";
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Profile = () => {
   const navigate = useNavigate();
@@ -12,9 +14,9 @@ const Profile = () => {
   const [editEmail, setEmail] = useState("");
 
   const getData = async () => {
-      const item = await axios.get(`${BASE_URL}/email/${local.result.email}`);
-      console.log(item.data);
-      setAccount(item.data);
+    const item = await axios.get(`${BASE_URL}/email/${local.result.email}`);
+    console.log(item.data);
+    setAccount(item.data);
   };
 
   const getDataLS = () => {
@@ -56,54 +58,59 @@ const Profile = () => {
   };
 
   return (
+    <>
+    <NAVBAR />
     <div className="profile">
       {account.map((item, i) => {
         return (
-          <div>
-            <div className="main">
-              <h2>PROFILE</h2>
-              <div className="card">
-                <div className="card-body">
-                  <i className="fa fa-pen fa-xs edit" />
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>Name</td>
-                        <td>:</td>
-                        <td>{item.fullName}</td>
-                      </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td>:</td>
-                        <td>{item.email}</td>
-                      </tr>
-                      <tr>
-                        <td>phone</td>
-                        <td>:</td>
-                        <td>{item.phone}</td>
-                      </tr>
-                      <tr>
-                        <td>status</td>
-                        <td>:</td>
-                        <td>{item.status1.status}</td>
-                      </tr>
-                      <tr>
-                        <td>workAt</td>
-                        <td>:</td>
-                        <td>{item?.workAt?.fullName}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+          <>
+            
+
+            <div>
+              <div className="main">
+                <h2>PROFILE</h2>
+                <div className="card">
+                  <div className="card-body">
+                    <i className="fa fa-pen fa-xs edit" />
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>Name</td>
+                          <td>:</td>
+                          <td>{item.fullName}</td>
+                        </tr>
+                        <tr>
+                          <td>Email</td>
+                          <td>:</td>
+                          <td>{item.email}</td>
+                        </tr>
+                        <tr>
+                          <td>phone</td>
+                          <td>:</td>
+                          <td>{item.phone}</td>
+                        </tr>
+                        <tr>
+                          <td>status</td>
+                          <td>:</td>
+                          <td>{item.status1.status}</td>
+                        </tr>
+                        <tr>
+                          <td>workAt</td>
+                          <td>:</td>
+                          <td>{item?.workAt?.fullName}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </>
         );
       })}
     </div>
+    </>
   );
 };
 
 export default Profile;
-
-

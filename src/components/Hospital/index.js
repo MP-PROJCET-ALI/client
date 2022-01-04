@@ -1,140 +1,145 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./style.css";
+import NAVBAR from "../Navbar";
 
-const  Hospital = () => {
-  
-const AddUsewr = async (e) => {
+const Hospital = () => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const [doctors, setdoctors] = useState([]);
+  const AddUsewr = async (e) => {
+    try {
+      e.preventDefault();
+      const result = await axios.post(`${BASE_URL}/newdoctor`, {
+        DoctorId: e.target.DoctorId.value,
+        workAt: e.target.workAt.value,
+        // role: "61c4983a20623279b6c0768c",
+      });
+      console.log(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  try {
-    e.preventDefault();
-    const result = await axios.post(`${BASE_URL}/newdoctor`, {
-      DoctorId: e.target.DoctorId.value,
-      rolr:"61c4983a20623279b6c0768c",
-      
-    });
-    console.log(result.data);
-  } catch (error) {
-    console.log(error);
-  }
-};
+  const getDoctors = async (e) => {
+    try {
+      const result = await axios.get(`${BASE_URL}/getdoctors`);
+      console.log(result.data);
+      setdoctors(
+        result.data.filter(
+          (i) =>
+            i.workAt == JSON.parse(localStorage.getItem("user")).result?._id
+        )
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(JSON.parse(localStorage.getItem("user")).result.role);
 
-    return (
-        <>
-        <div className="login-wrap">
-          <div className="login-html">
-            <input
-              id="tab-1"
-              type="radio"
-              name="tab"
-              className="sign-in"
-              defaultChecked
-            />
-            <label htmlFor="tab-1" className="tab">
-              Sign In
-            </label>
-            <input id="tab-2" type="radio" name="tab" className="sign-up" />
-            <label htmlFor="tab-2" className="tab">
-              Sign Up
-            </label>
-            <div className="login-form">
-              <div className="sign-in-htm">
-                <form onSubmit={AddUsewr} >
-                  <div className="group" name="DoctorId">
-                    <label htmlFor="email" className="label">
-                      email
-                    </label>
-                    <input id="user" type="text" name="DoctorId" className="input" />
-                  </div>
-  
-                  
-                 
-                  <div className="group">
-                    <button
-                      type="submit"
-                      className="button"
-                      defaultValue="Sign In"
-                    >
-                      Login
-                    </button>
-                  </div>
-                </form>
-                <div className="hr" />
-                <div className="foot-lnk">
-                  <a href={"/forgot"}>Forgot Password?</a>
+  useEffect(() => {
+    getDoctors();
+  }, []);
+
+  return (
+    <>
+      <NAVBAR />
+
+      <div>
+        <div className="container">
+          <form className="contact-3" action method="post" onSubmit={AddUsewr}>
+            <h3>Doctor Statement</h3>
+            <div className="col50 colleft">
+              <div className="col50 colleft">
+                <div className="wd50">
+                  <label>DoctorID</label>
+                  <br />
+                  <br />
+                  <input
+                    placeholder="DoctorId"
+                    name="DoctorId"
+                    type="text"
+                    required
+                    autofocus
+                  />
+                  <br />
+                  <select name="workAt">
+                    <option value="61c974d051adae120e611ad7">
+                      Qassim Hospital
+                    </option>
+                    <option value="61c9704fbe6d2e288149056a">
+                      Riyadh Hospital
+                    </option>
+                  </select>
                 </div>
               </div>
-              <form >
-                <div className="sign-up-htm">
-                  <div className="group">
-                    <label htmlFor="user" className="label">
-                      Username
-                    </label>
-                    <input
-                      id="user"
-                      type="text"
-                      name="username"
-                      className="input"
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">
-                      Password
-                    </label>
-                    <input
-                      id="pass"
-                      name="Password1a"
-                      type="password"
-                      className="input"
-                      data-type="password"
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">
-                      Repeat Password
-                    </label>
-                    <input
-                      id="pass"
-                      name="passwordaa2"
-                      type="password"
-                      className="input"
-                      data-type="password"
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">
-                      Email Address
-                    </label>
-                    <input id="pass" type="text" className="input" name="email" />
-                  </div>
-                  <form action="/action_page.php" className="group">
-                    <label htmlFor="cars">Choose :</label>
-                    <select className="button">
-                      <option value="Hospital">Hospital</option>
-                      <option value="User">User</option>
-                      <option value="Doctor">Doctor</option>
-                    </select>
-                    <br />
-                    <br />
-                  </form>
-                  <div className="group">
-                    <button placeholder="send" className="button">
-                      Sign Up
-                    </button>
-                  </div>
-                  <div className="hr" />
-                  <div className="foot-lnk">
-                    <label htmlFor="tab-1">Already Member?</label>
+            </div>
+
+            <div className="wd100">
+              <button name="submit" type="submit" id data-submit="...Sending">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <h1>Doctors working in the hospital</h1>
+      {JSON.parse(localStorage.getItem("user")).result?.role ==
+      "61c4981620623279b6c0768a" ? (
+        <>
+          {doctors.map((i) => (
+            <table>
+            <div>
+              <div className="boxContiner-1">
+                <div className="boxBody-1">
+                  <div className="card-12">
+                    <div className="profileImage-12" />
+                    
+
+                    <div className="nameFamily-12">
+                      <h1>Doctor Card</h1>
+                      <td>FullName</td>
+                      <td>:</td>
+                      <td>{i.fullName}</td>
+                    </div>
+                    <div className="nameFamily-12">
+                      <td>Email</td>
+                      <td>:</td>
+                      <td>{i.email}</td>
+                    </div>
+                    <div className="nameFamily-12">
+                      <td>Phone</td>
+                      <td>:</td>
+                      <td>{i.phone}</td>
+                    </div>
+
+                    <div className="nameFamily-12">
+                      <td>DoctorId</td>
+                      <td>:</td>
+                      <td>{i.DoctorId}</td>
+                    </div>
+                    
+
+                    <div className="socialMedia">
+                      <div className="mail"></div>
+
+                      <div className="linkdin"></div>
+                      <div className="phone"></div>
+                    </div>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
-          </div>
-        </div>
-        );
-      </>
-    )
-}
+            </table>
+          ))}
+        </>
+      ) : (
+        <>
+          <h1>Not authorized to view info</h1>
+        </>
+      )}
+    </>
+  );
+};
 
-export default Hospital
+export default Hospital;
