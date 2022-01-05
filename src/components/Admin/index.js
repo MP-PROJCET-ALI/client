@@ -31,20 +31,17 @@ const Admin = () => {
     getPendingHospitals();
   }, []);
   return (
-    <>
+    <div>
         <NAVBAR/>
-
-    <div className="container">
+<div className="wrapperAdmin">
+    <div className="containerAdmin">
       <div className="row custom-nav">
         <div className="col-md-3 aa">
           <div className="h-left-con"></div>
         </div>
         <div className="col-md-7 aa">
           <div className="h-center-con">
-            <div className="col-md-4">
-              <i className="fa fa-search" />
-              <input type="text" placeholder="Search" />
-            </div>
+           
           </div>
         </div>
         <div className="col-md-2 aa">
@@ -69,23 +66,23 @@ const Admin = () => {
             <ul>
               <li>
                 <i className="fa fa-users" />
-                <h4>MEMBERS</h4>
+                {/* <h4>MEMBERS</h4> */}
               </li>
               <li>
                 <i className="fa fa-truck" />
-                <h4>PRODUCT</h4>
+                {/* <h4>PRODUCT</h4> */}
               </li>
               <li>
                 <i className="fa fa-umbrella" />
-                <h4>ORDER</h4>
+                {/* <h4>ORDER</h4> */}
               </li>
               <li>
                 <i className="fa fa-shopping-cart" />
-                <h4>SHOPPING</h4>
+                {/* <h4>SHOPPING</h4> */}
               </li>
               <li>
                 <i className="fa fa-gears" />
-                <h4>SETTING</h4>
+                {/* <h4>SETTING</h4> */}
               </li>
             </ul>
           </div>
@@ -138,10 +135,10 @@ const Admin = () => {
                   <td className="text-center">{item.location}</td>
                   <td className="text-center">{item.licenseNumber}</td>
                   <td>
-                    <button onClick={() =>updateStatus(item._id, '61c82191e027be8294db69c8')}>Accept</button>
+                    <button className="Button_Admin" id="Button_Accept" onClick={() =>updateStatus(item._id, '61c82191e027be8294db69c8')}>Accept</button>
                   </td>
                   <td>
-                    <button onClick={() =>updateStatus(item._id, '61c82199e027be8294db69ca')}>Reject</button>
+                    <button  className="Button_Admin" id="Button_Reject"  onClick={() =>updateStatus(item._id, '61c82199e027be8294db69ca')}>Reject</button>
                   </td>
                 </tr>
               ))}
@@ -150,7 +147,8 @@ const Admin = () => {
         </div>
       </div>
     </div>
-    </>
+    </div>
+    </div>
   );
 };
 

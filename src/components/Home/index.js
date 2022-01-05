@@ -67,12 +67,7 @@ const Home = () => {
                 <p className="date">28.12.2018</p>
               </div>
             </div>
-            <div className="stage_inner__list">
-              <li>Nutrition &amp; healthy food</li>
-              <li>Mind and mood</li>
-              <li>Fitness and sport</li>
-              <li>Beauty and skincare</li>
-            </div>
+
             <div className="stage_inner__centerbox">
               <div className="illustration" />
               <div className="arrow">

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 import NAVBAR from "../Navbar";
+import { GrLogin } from "react-icons/gr";
 
 const Forget = () => {
   const navigate = useNavigate();
@@ -71,13 +72,13 @@ const Forget = () => {
                 </button>
               </div>
               <p>{err}</p>
-              <button
+              <h3
                 onClick={() => {
-                  navigate("/");
+                  navigate("/login");
                 }}
               >
-                Back
-              </button>
+               <GrLogin/>
+              </h3>
             </form>
             <div className="hr" />
           </div>

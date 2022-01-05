@@ -156,9 +156,8 @@ input[type="checkbox"]:checked + div + div .stage_inner__right .link {
   left: -100px;
 }
 .stage_bg {
-  height: 109vh;
-  background: var(--blue);
-
+  height: 46vh;
+  background: #ECEBEE;
   left: 0;
   top: 0;
   width: 100%;
@@ -170,8 +169,9 @@ input[type="checkbox"]:checked + div + div .stage_inner__right .link {
   right: 0;
   box-shadow: 0px 18px 43px -18px rgb(30 31 38 / 21%);
   margin: auto;
-  top: 50%;
+  top: 30%;
   transform: translateY(-50%);
+  margin-top: 16%;
   width: 100%;
   background: var(--grey);
   overflow: hidden;
