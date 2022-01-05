@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { MdEmail } from "react-icons/md";
+
 import NAVBAR from "../Navbar";
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 
 // console.log(process.env.REACT_APP_BASE_URL);
 const Login = () => {
@@ -16,7 +16,6 @@ const Login = () => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [err, setErr] = useState("");
 
-
   const login = async (e) => {
     console.log(e.target.email.value);
     try {
@@ -25,21 +24,20 @@ const Login = () => {
         email: e.target.email.value,
         password: e.target.password.value,
       });
-     
+
       if (result.data.result) {
         Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Your work has been saved',
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
           showConfirmButton: false,
-          timer: 1500
-        })
+          timer: 1500,
+        });
         localStorage.setItem("user", JSON.stringify(result.data));
         navigate("/");
       } else {
-        Swal.fire('Please make sure your password and email')
+        Swal.fire("Please make sure your password and email");
         setErr(result.data);
-
       }
     } catch (error) {
       console.log(error);
@@ -80,10 +78,9 @@ const Login = () => {
   };
   return (
     <>
-    <NAVBAR/>
+      <NAVBAR />
       <div className="login-wrap">
         <div className="login-html">
-        
           <input
             id="tab-1"
             type="radio"
@@ -144,13 +141,20 @@ const Login = () => {
                 </div>
               </form>
               <div className="group">
-              <label>Are you a doctor?</label>
-          <button onClick={() => navigate("/Doctorid")}  type="submit"
-                    className="button" >Sign up here</button>
-          </div>
+                <label className="ary_you">Are you a Doctor ?</label>
+                <button
+                  onClick={() => navigate("/Doctorid")}
+                  type="submit"
+                  className="button"
+                >
+                  Sign up here
+                </button>
+              </div>
               <div className="hr" />
               <div className="foot-lnk">
-                <a href={"/forgot"}>Forgot Password?</a>
+                <a href={"/forgot"} className="ary_you">
+                  Forgot Password?
+                </a>
               </div>
             </div>
             <form onSubmit={signup}>
@@ -197,14 +201,12 @@ const Login = () => {
                   <input id="pass" type="text" className="input" name="email" />
                 </div>
                 <div className="group">
-                  <label>Choose :</label>
+                  <label className="ary_you">Choose :</label>
                   <select className="button" name="role">
                     <option value="61c4981620623279b6c0768a">Hospital</option>
                     <option value="61c46c8e02f5af6c49d02a17 ">User</option>
-                    <option value="61c4983a20623279b6c0768c">
-                      Doctor
-                    </option>
                   </select>
+                  <p>{err}</p>
                   <br />
                   <br />
                 </div>
@@ -213,10 +215,10 @@ const Login = () => {
                   <button placeholder="send" className="button">
                     Sign Up
                   </button>
-                </div>
-                <div className="hr" />
-                <div className="foot-lnk">
-                  <label htmlFor="tab-1">Already Member?</label>
+                  <div className="hr" />
+                  <div className="foot-lnk">
+                    <label htmlFor="tab-1">Already Member?</label>
+                  </div>
                 </div>
               </div>
             </form>

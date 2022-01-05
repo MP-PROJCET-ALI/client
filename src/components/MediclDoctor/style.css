@@ -256,7 +256,7 @@ button:focus {
 .contact {
   background: #f9f9f9;
   padding: 25px;
-  margin-top: 20%;
+  border-radius: 1pc;
 }
 .contact h3 {
   display: block;
@@ -270,6 +270,8 @@ button:focus {
 .contact-1 {
   background: #f9f9f9;
   padding: 25px;
+  margin-top: 2%;
+  border-radius: 1pc;
  
 }
 .contact-1 h3 {
@@ -323,6 +325,7 @@ button:focus {
   margin: 0 0 5px;
   padding: 10px;
   font-size: 15px;
+  border-radius:6px;
 }
 .contact-1 button[type="submit"]:hover {
   background: #09c;
@@ -405,6 +408,7 @@ textarea {
   margin: 0 0 5px;
   padding: 10px;
   font-size: 15px;
+  border-radius:6px;
 }
 .contact button[type="submit"]:hover {
   background: #09c;
@@ -542,4 +546,88 @@ textarea {
 
 .container{
   top: 30%;
+}
+
+.mybox{
+ 
+  display: flex;
+}
+.patient_log{
+  display: flex;
+  flex-direction: column;
+}
+
+.boxpPtients {
+display: flex;
+flex-direction: column;
+}
+.card-12{
+  display: flex;
+  width: 100vh;
+  height: 15vh;
+
+}
+
+.bigFamily {
+  display: flex;
+  
+
+}
+
+.nameFamily-12{
+ width: 20vh;
+}
+/* .search {
+  margin-top: -50%;
+} */
+
+
+.grid-medical-doctor{
+  margin: 16px auto;
+
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 16px;
+  padding:0 16px;
+  /* justify-items: start; */
+  /* align-items: start; */
+}
+.patient-table{
+  width: 100%;
+  border-collapse: uppercase;
+  color: #2b777c;
+
+}
+.patient-table tr{
+  padding: 16px 0;
+}
+.patient-table th,td{
+  border-bottom: 1px solid black ;
+  padding: 6px 32px;
+  text-align: left;
+  margin-top:20px;
+}
+.patient-table th{
+  font-weight: bold;
+}
+
+.grid1{
+  background:white;
+  padding:16px;
+  border-radius: 16px;
+  width: 100%;
+}
+.grid2{
+  background:white;
+  padding:16px;
+  border-radius: 16px;
+  width: 100%;
+}
+.input_Prescription{
+  /* border:1px solid rgba(243, 15, 15, 0.342); */
+  /* color: red; */
+  /* border: none; */
+  height: 4vh;
+  
+
 }

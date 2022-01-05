@@ -12,6 +12,8 @@ const Profile = () => {
   const [local, setLocal] = useState([]);
   const [edit, setEdit] = useState("");
   const [editEmail, setEmail] = useState("");
+  const [toggleName, setToggleName] = useState(false);
+  const [togglePhone, setTogglePhone] = useState(false)
 
   const getData = async () => {
     const item = await axios.get(`${BASE_URL}/email/${local.result.email}`);
@@ -33,23 +35,22 @@ const Profile = () => {
 
   const editName = async (e) => {
     e.preventDefault();
-    if (edit.length > 0) {
-      const editFullName = await axios.put(
-        `${BASE_URL}/edit/${local.result.email}`,
+    console.log(e.target[1].value);
 
-        {
-          fullName: edit,
-          // newEmail:editEmail,
-          // phone:edit,
-          // status1:edit,
-        }
-      );
-      console.log(editFullName);
-      document.getElementById("username");
-      getData();
-    } else {
-      console.log("");
-    }
+    const editFullName = await axios.put(
+      `${BASE_URL}/updateProfile/${local.result._id}`,
+
+      {
+        fullName: e.target[0].value,
+        phone: e.target[1].value,
+        // password: e.target.password.value,
+      }
+    );
+    console.log(editFullName);
+    setToggleName(false);
+    setTogglePhone(false)
+    document.getElementById("username");
+    getData();
   };
   const kick = () => {
     // eslint-disable-next-line
@@ -59,56 +60,102 @@ const Profile = () => {
 
   return (
     <>
-    <NAVBAR />
-    <div className="profile">
-      {account.map((item, i) => {
-        return (
-          <>
-            
+      <NAVBAR />
+      <div className="profile">
+        {account.map((item, i) => {
+          return (
+            <>
+              <div>
+                <div className="main">
+                  <div className="card">
+                    <div className="card-body">
+                      <i className="fa fa-pen fa-xs edit" />
+                      <form onSubmit={editName}>
+                        <table>
+                          <div className="profile_P">
+                            <h2>PROFILE</h2>
+                          </div>
+                          <tbody>
+                            <tr>
+                              <td>Name</td>
+                              <td>:</td>
 
-            <div>
-              <div className="main">
-                <h2>PROFILE</h2>
-                <div className="card">
-                  <div className="card-body">
-                    <i className="fa fa-pen fa-xs edit" />
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td>Name</td>
-                          <td>:</td>
-                          <td>{item.fullName}</td>
-                        </tr>
-                        <tr>
-                          <td>Email</td>
-                          <td>:</td>
-                          <td>{item.email}</td>
-                        </tr>
-                        <tr>
-                          <td>phone</td>
-                          <td>:</td>
-                          <td>{item.phone}</td>
-                        </tr>
-                        <tr>
-                          <td>status</td>
-                          <td>:</td>
-                          <td>{item.status1.status}</td>
-                        </tr>
-                        <tr>
-                          <td>workAt</td>
-                          <td>:</td>
-                          <td>{item?.workAt?.fullName}</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                              <td>{item.fullName}</td>
+                              {toggleName ? (
+                                <div>
+                                  <input
+                                    type="text"
+                                    name="fullName"
+                                    placeholder="Changing You fullName"
+                                    className="show"
+                                  />
+                                </div>
+                              ) : (
+                                <button
+                                  className="Button_Change"
+                                  onClick={() => setToggleName(true)}
+                                >
+                                  Edit name
+                                </button>
+                              )}
+                            </tr>
+                            <tr>
+                              <td>Email</td>
+                              <td>:</td>
+                              <td>{item.email}</td>
+                            </tr>
+
+                            <tr>
+                              <td>phone</td>
+                              <td>:</td>
+                              <td>{item.phone}</td>
+                              
+                               {togglePhone ? (
+                                <div>
+                                  <input
+                                type="text"
+                                name="phone"
+                                placeholder="Changing You phone"
+                                className="show"
+                              /> 
+                                </div>
+                              ) : (
+                                <button
+                                  className="Button_Change"
+                                  onClick={() => setTogglePhone(true)}
+                                >
+                                  Edit name
+                                </button>
+                              )}
+                            </tr>
+                            <tr>
+                              <td>status</td>
+                              <td>:</td>
+                              <td>{item.status1.status}</td>
+                            </tr>
+                            <tr>
+                              <td>workAt</td>
+                              <td>:</td>
+                              <td>{item?.workAt?.fullName}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <button
+                          type="submit"
+                          // className="button"
+                          className="Button_Change"
+                        >
+                          Change
+                        </button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </>
-        );
-      })}
-    </div>
+            </>
+          );
+        })}
+      </div>
     </>
   );
 };

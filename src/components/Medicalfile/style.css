@@ -1,53 +1,43 @@
-.home{
-
-    margin-top: 50%;
-}
-
-
-.box {
+.info_per {
     position: absolute;
-    top: 17%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 15%;
+    left: 39%;
+    width: 40%;
+    height: 70vh;
+    border-radius: 25px;
+    background: rgb(216, 205, 205);
 }
-.input-sh {
-    padding: 10px;
-    width: 44px;
-    height: 44px;
-    background: none;
-    border: 4px solid #928f84;
-    border-radius: 50px;
-    box-sizing: border-box;
-    font-family: Comic Sans MS;
-    font-size: 26px;
-    color: #ffd52d;
-    outline: none;
-    transition: .5s;
+.info_tab {
+  width: 50%;
 }
-.box:hover input {
-    width: 350px;
-    background: #272133;
-    border-radius: 10px;
+td {
+  background: black;
 }
-i {
-    position: absolute;
-    top: 50%; right: 15px;
-    transform: translate(-50%, 50%);
-    font-size: 26px;
-    color: #ffd52d;
-    transition: .2s;
+.tbody_info {
+    width: 82.5vh;
+    height: 87%;
+    border-radius: 0px;
 }
-.box:hover .open {
-    opacity: 0; z-index: -1;
+
+.tbody_info td {
+    
+    border-radius: 5px;
 }
-.close {
-    opacity: 0;
+.text_center_td{
+    text-align: center;
+    width: 3%;
 }
-.deff {
-    color: #fff;
-    font-family: sans-serif;
-    font-size: 18px;
-    background: rgb(56, 30, 105);
-    padding: 12px;
-    border-radius: 8px;
+
+.Perscription{
+  text-align: center;
 }
+.back_info_Backing{
+    margin-left: 10px;
+    cursor: pointer;
+}
+.back_inf{
+    cursor: pointer;
+
+}
+
+

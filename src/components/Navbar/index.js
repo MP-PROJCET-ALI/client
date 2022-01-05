@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import "./style.css";
-import {GrLogin} from 'react-icons/gr'
+import {AiOutlineLogin} from 'react-icons/ai'
+import {BiLogOutCircle} from 'react-icons/bi'
+
 // navbar
 const NAVBAR = () => {
   const navigate = useNavigate();
@@ -14,61 +16,61 @@ useEffect(() => {
   setUser(JSON.parse(localStorage.getItem("user")));
 },[])
   return (
+    
     <header className="navbar-header">
-      
-      <div className="container">
         <div className="grid-nav">
-          <h1 className="logo">
-            
             <img src={img1} className="logo" />
-          </h1>
           <div className="routes">
             <ul className="route-list">
               <li className="list-nav">
-                <Link to="/">Home</Link>
+                <Link to="/" className="navbar-link">Home</Link>
               </li>
            
-              <li>
-                <Link to="/About">About</Link>
+              <li className="list-nav">
+                <Link to="/About" className="navbar-link">About</Link>
               </li>
               <li>
-              {user? <><li>
-              <Link to="/Profile">Profile</Link>
+              {user? <>
+              <li className="list-nav">
+              <Link to="/Profile" className="navbar-link">Profile</Link>
               </li></>:<></>}
                 
               </li>
-              
-              {user? <><li>
-                <Link to="/Medicalfile">Medical</Link>
+              {user?.result?.role=='61c46c8e02f5af6c49d02a17'||user?.result?.role=='61c4983a20623279b6c0768c' ?   <>
+              <li className="list-nav">
+              <Link to="/Medicalfile" className="navbar-link">Medical</Link>
               </li></>:<></>}
+             
                 
               
-              {user?.result?.role=='61c4983a20623279b6c0768c'||user?.result?.role=='61c4660902f5af6c49d02a15'? <><li>
-                <Link to="/MediclDoctor">Medical Doctor</Link>
+              {user?.result?.role=='61c4983a20623279b6c0768c'? <>
+              <li className="list-nav">
+                <Link to="/MediclDoctor" className="navbar-link">Medical Doctor</Link>
               </li></>:<></>}
-              {user?.result?.role=='61c4981620623279b6c0768a'||user?.result?.role=='61c4660902f5af6c49d02a15'? <><li>
-                <Link to="/Hospital">Hospital</Link>
+              {user?.result?.role=='61c4981620623279b6c0768a'? <>
+              <li className="list-nav">
+                <Link to="/Hospital" className="navbar-link">Hospital</Link>
               </li></>:<></>}
-              {user?.result?.role=='61c4983a20623279b6c0768c'||user?.result?.role=='61c4660902f5af6c49d02a15'? <><li>
-                <Link to="/ControlRoom">Admin</Link>
+              {user?.result?.role=='61c4660902f5af6c49d02a15'? <>
+              <li className="list-nav">
+                <Link to="/ControlRoom" className="navbar-link">Admin</Link>
               </li></>:<></>}
             </ul>
           </div>
           <div className="account-icons">
             <ul className="icons-list">
               {user ? (
-                <button className="logout-btn" onClick={()=>{localStorage.removeItem("user"); navigate("/login"); localStorage.removeItem("searched")}}><GrLogin/></button>
+                <h1 className="logout-btn" onClick={()=>{localStorage.removeItem("user"); navigate("/login"); localStorage.removeItem("searched")}}><BiLogOutCircle/></h1>
               ) : (
                 <div className="GrLogin">
                 <li >
-                  <Link to={"/login"}> <GrLogin/></Link>
+                  <Link to={"/login"} className="login_nav"> <AiOutlineLogin/></Link>
                 </li>
                 </div>
               )}
             </ul>
           </div>
         </div>
-      </div>
     </header>
    
   );
