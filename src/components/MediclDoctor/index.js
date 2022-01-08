@@ -53,7 +53,7 @@ const Doctor = () => {
   ////////////////////////////////////////////////////////////////////////
 
   const move = () => {
-    navigate("/Medicalfile");
+    
   };
   const AddUsewr = async (e) => {
     try {
@@ -79,6 +79,8 @@ const Doctor = () => {
       });
       console.log(result.data);
       localStorage.setItem("searched", result.data._id);
+      navigate("/Medicalfile");
+      
     } catch (error) {
       console.log(error);
     }
@@ -104,11 +106,10 @@ const Doctor = () => {
               name="txt"
               onMouseOut="document.search.txt.value = ''"
               onChange={(e) => setSearched(e.target.value)}
+              
             />
           </form>
-          <button name="submit" type="submit" onClick={move}>
-          Go To The patient Page
-          </button>
+         
           <div className="list-row">
             <p>Name</p>
             <p>Email</p>
@@ -218,7 +219,7 @@ const Doctor = () => {
                 <h3>patient</h3>
                 <label> Patient FullName</label>
                 <input
-                  placeholder="username"
+                  placeholder="Enter full name"
                   name="username"
                   type="text"
                   required
@@ -226,7 +227,7 @@ const Doctor = () => {
                 />
                 <label name>Password</label>
                 <input
-                  placeholder="Pharmaceutical"
+                  placeholder="Enter password"
                   type="text"
                   name="password"
                   required
@@ -235,7 +236,7 @@ const Doctor = () => {
                 <label> phone </label>
                 <input
                   name="phone"
-                  placeholder=" Patients Condition"
+                  placeholder="Enter phone number"
                   type="text"
                   required
                 />

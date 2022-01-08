@@ -9,6 +9,8 @@ const Forget = () => {
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [err, setErr] = useState("");
+  const [option, setOption] = useState("in");
+
   const reset = async (e) => {
     try {
       e.preventDefault();
@@ -30,8 +32,46 @@ const Forget = () => {
   return (
     <>
       <NAVBAR />
+      <section className="section-login home-section section-medical-doctor">
+        <div className="medical-doctor-froms">
+   <h4>Reset password</h4>
+   <br/>
+          <div>
+            {option.includes("in") ? (
+              <form
+                className="from-medical-doctor"
+                action
+                method="post"
+                onSubmit={reset}
+              >
+                <label name>Email</label>
+                <input
+                  placeholder="example@gmail.com"
+                  name="email"
+                  type="email"
+                  required
+                  autoFocus
+                />
 
-      <div className="login-wrap">
+
+                <button name="submit" type="submit">
+                Send
+                </button>
+              
+             
+
+               
+
+                <p>{err}</p>
+             
+              </form>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+      </section>
+      {/* <div className="login-wrap">
         <div className="login-html">
           <input
             id="tab-5"
@@ -84,7 +124,7 @@ const Forget = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
