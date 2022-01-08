@@ -3,10 +3,10 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import "./style.css";
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 const DoctorId = () => {
   const navigate = useNavigate();
-
+  const [option, setOption] = useState("in");
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const signup = async (e) => {
@@ -23,7 +23,7 @@ const DoctorId = () => {
       }
     } catch (error) {
       if (error) {
-        Swal.fire('ID is wrong please check')
+        Swal.fire("ID is wrong please check");
       }
     }
   };
@@ -52,63 +52,38 @@ const DoctorId = () => {
   };
   return (
     <>
-      <div className="login-wrap">
-        <div className="login-html">
-          <input
-            id="tab-5"
-            type="radio"
-            name="tab-5"
-            className="sign-in"
-            defaultChecked
-          />
-          <label htmlFor="tab-5" className="tab">
-            Doctor Id
-          </label>
-          <input id="tab-2" type="radio" name="DoctorId" className="sign-up" />
-          <label htmlFor="tab-2" className="tab"></label>
-          <div className="login-form">
-            <div className="sign-in-htm">
-              <form onSubmit={signup}>
-                <div className="group" name="email">
-                  <label htmlFor="email" className="label">
-                    Id
-                  </label>
-                  <input
-                    id="user"
-                    type="text"
-                    name="DoctorId"
-                    className="input"
-                  />
-                </div>
+      <section className="section-login home-section section-medical-doctor">
+        <div className="medical-doctor-froms">
+          <div className="form-options"></div>
+          <div>
+            {option.includes("in") ? (
+              <form
+                className="from-medical-doctor"
+                action
+                method="post"
+                onSubmit={signup}
+              >
+                <label name>Doctor Id</label>
+                <input
+                  placeholder="number ID"
+                  name="DoctorId"
+                  type="ID"
+                  required
+                  autoFocus
+                />
 
-                <div className="group">
-                  <input
-                    id="check"
-                    type="checkbox"
-                    className="check"
-                    defaultChecked
-                  />
-                  <label htmlFor="check">
-                    <span className="icon" /> Keep me Signed in
-                  </label>
-                </div>
-                <div className="group">
-                  <button
-                    type="submit"
-                    className="button"
-                    defaultValue="Sign In"
-                  >
-                    Login
-                  </button>
-                </div>
-                {/* <p>{err}</p> */}
+                <button name="submit" type="submit">
+                  Sign In
+                </button>
+                <div></div>
               </form>
-              <div className="hr" />
-             
-            </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
-      </div>
+      </section>
+      );
       <>
         <div className="login-wrap">
           <div className="login-html">

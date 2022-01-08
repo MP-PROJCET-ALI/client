@@ -10,6 +10,8 @@ import Swal from "sweetalert2";
 const Login = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
+  const [option, setOption] = useState("in");
+
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("user")));
   }, []);
@@ -79,45 +81,60 @@ const Login = () => {
   return (
     <>
       <NAVBAR />
-      <div className="login-wrap">
-        <div className="login-html">
-          <input
-            id="tab-1"
-            type="radio"
-            name="tab"
-            className="sign-in"
-            defaultChecked
-          />
-          <label htmlFor="tab-1" className="tab">
-            Sign In
-          </label>
-          <input id="tab-2" type="radio" name="tab" className="sign-up" />
-          <label htmlFor="tab-2" className="tab">
-            Sign Up
-          </label>
-          <div className="login-form">
-            <div className="sign-in-htm">
-              <form onSubmit={login}>
-                <div className="group" name="email">
-                  <label htmlFor="email" className="label">
-                    email
-                  </label>
-                  <input id="user" type="text" name="email" className="input" />
-                </div>
+      <section className="section-login home-section section-medical-doctor">
+        <div className="medical-doctor-froms">
+          <div className="form-options">
+            <button
+              className={`${
+                option.includes("in") ? "btn-active" : "btn-not-active"
+              }`}
+              onClick={() => setOption("in")}
+            >
+              Sign in
+            </button>
+            <button
+              className={`${
+                option.includes("up") ? "btn-active" : "btn-not-active"
+              }`}
+              onClick={() => setOption("up")}
+            >
+              Sign up
+            </button>
+          </div>
+          <div>
+            {option.includes("in") ? (
+              <form
+                className="from-medical-doctor"
+                action
+                method="post"
+                onSubmit={login}
+              >
+                <label name>email</label>
+                <input
+                  placeholder="example@gmail.com"
+                  name="email"
+                  type="email"
+                  required
+                  autoFocus
+                />
 
-                <div className="group" name="password">
-                  <label htmlFor="pass" className="label">
-                    Password
-                  </label>
-                  <input
-                    id="pass"
-                    type="password"
-                    name="password"
-                    className="input"
-                    data-type="password"
-                  />
-                </div>
-                <div className="group">
+                <label name>Password</label>
+                <input
+                  placeholder="Enter your password"
+                  type="password"
+                  name="password"
+                  required
+                />
+
+                <button
+                  name="submit"
+                  type="submit"
+                  // id
+                  // data-submit="...Sending"
+                >
+                  Sign In
+                </button>
+                <div>
                   <input
                     id="check"
                     type="checkbox"
@@ -128,19 +145,22 @@ const Login = () => {
                     <span className="icon" /> Keep me Signed in
                   </label>
                 </div>
-
-                <div className="group">
-                  <button
+                <div>
+                  <label className="ary_you">Are you a Doctor ?</label>
+                  <a
+                    onClick={() => navigate("/Doctorid")}
                     type="submit"
                     className="button"
-                    defaultValue="Sign In"
                   >
-                    Login
-                  </button>
-                  <p>{err}</p>
+                    Sign up here
+                  </a>
                 </div>
-              </form>
-              <div className="group">
+
+                <a href={"/forgot"} className="ary_you">
+                  Forgot Password?
+                </a>
+
+                <p>{err}</p>
                 <label className="ary_you">Are you a Doctor ?</label>
                 <button
                   onClick={() => navigate("/Doctorid")}
@@ -149,82 +169,73 @@ const Login = () => {
                 >
                   Sign up here
                 </button>
-              </div>
-              <div className="hr" />
-              <div className="foot-lnk">
-                <a href={"/forgot"} className="ary_you">
-                  Forgot Password?
-                </a>
-              </div>
-            </div>
-            <form onSubmit={signup}>
-              <div className="sign-up-htm">
-                <div className="group">
-                  <label htmlFor="user" className="label">
-                    Username
-                  </label>
-                  <input
-                    id="user"
-                    type="text"
-                    name="username"
-                    className="input"
-                  />
-                </div>
-                <div className="group">
-                  <label htmlFor="pass" className="label">
-                    Password
-                  </label>
-                  <input
-                    id="pass"
-                    name="Password1a"
-                    type="password"
-                    className="input"
-                    data-type="password"
-                  />
-                </div>
-                <div className="group">
-                  <label htmlFor="pass" className="label">
-                    Repeat Password
-                  </label>
-                  <input
-                    id="pass"
-                    name="passwordaa2"
-                    type="password"
-                    className="input"
-                    data-type="password"
-                  />
-                </div>
-                <div className="group">
-                  <label htmlFor="pass" className="label">
-                    Email Address
-                  </label>
-                  <input id="pass" type="text" className="input" name="email" />
-                </div>
-                <div className="group">
+              </form>
+            ) : (
+              ""
+            )}
+          </div>
+          <div>
+            {option.includes("up") ? (
+              <form
+                className="from-medical-doctor"
+                action
+                method="post"
+                onSubmit={login}
+              >
+                <label name>Username</label>
+                <input
+                  placeholder="Enter your username"
+                  name="username"
+                  type="text"
+                  required
+                  autoFocus
+                />
+
+                <label name>Password</label>
+                <input
+                  placeholder="Enter your password"
+                  type="password"
+                  name="Password1a"
+                  required
+                />
+                <label name>Repeat Password</label>
+                <input
+                  placeholder="Retype your password"
+                  type="password"
+                  name="passwordaa2"
+                  required
+                />
+                <label name>Email Address</label>
+                <input
+                  placeholder="Enter your email"
+                  type="email"
+                  name="email"
+                  required
+                />
+                <div>
                   <label className="ary_you">Choose :</label>
                   <select className="button" name="role">
                     <option value="61c4981620623279b6c0768a">Hospital</option>
                     <option value="61c46c8e02f5af6c49d02a17 ">User</option>
                   </select>
-                  <p>{err}</p>
-                  <br />
-                  <br />
                 </div>
 
-                <div className="group">
-                  <button placeholder="send" className="button">
-                    Sign Up
-                  </button>
-                  <div className="hr" />
-                  <div className="foot-lnk">
-                    <label htmlFor="tab-1">Already Member?</label>
-                  </div>
-                </div>
-              </div>
-            </form>
+                <button
+                  name="submit"
+                  type="submit"
+                  // id
+                  // data-submit="...Sending"
+                >
+                  Sign Up
+                </button>
+                <label htmlFor="tab-1">Already Member?</label>
+              </form>
+            ) : (
+              ""
+            )}
           </div>
         </div>
-      </div>
+      </section>
       );
     </>
   );

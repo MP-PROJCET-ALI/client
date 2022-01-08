@@ -8,6 +8,7 @@ import NAVBAR from "../Navbar";
 const Doctor = () => {
   const navigate = useNavigate();
   const [searched, setSearched] = useState("");
+  const [option, setOption] = useState("Prescription");
   const [patients, setPatients] = useState([]);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -51,6 +52,9 @@ const Doctor = () => {
   ////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
 
+  const move = () => {
+    navigate("/Medicalfile");
+  };
   const AddUsewr = async (e) => {
     try {
       e.preventDefault();
@@ -88,256 +92,175 @@ const Doctor = () => {
   return (
     <>
       <NAVBAR />
-
-      <div className="grid-medical-doctor">
-        <div className="grid1">
-          {/* <div className="search-box">
-
+      <section className={"home-section section-medical-doctor"}>
+        <div className="patient-list">
+          <form name="search" className={"search-form"}>
+            <span onClick={() => serch()} className="deff">
+              Search
+            </span>
+            <input
+              type="text"
+              className="input-sh"
+              name="txt"
+              onMouseOut="document.search.txt.value = ''"
+              onChange={(e) => setSearched(e.target.value)}
+            />
+          </form>
+          <button name="submit" type="submit" onClick={move}>
+            Sign In
+          </button>
+          <div className="list-row">
+            <p>Name</p>
+            <p>Email</p>
+            <p>Phone</p>
+            <p>ID</p>
           </div>
-          <div className="search-content">
-
-          </div> */}
-
-          <table className="patient-table">
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>ID</th>
-            </tr>
-            {patients.map((item, i) => {
-              return (
-                <tr>
-                  <td>{item.fullName}</td>
-                  <td>{item.email}</td>
-                  <td>{item.phone}</td>
-                  <td>{item._id}</td>
-                </tr>
-              );
-            })}
-          </table>
+          {patients.map((item, i) => {
+            return (
+              <>
+                <div className="list-row">
+                  <p>{item.fullName}</p>
+                  <p>{item.email}</p>
+                  <p>{item.phone}</p>
+                  <p>{item._id}</p>
+                </div>
+              </>
+            );
+          })}
         </div>
-        <div className="grid2">
+        <div className="medical-doctor-froms">
+          <div className="form-options">
+            <button
+              className={`${
+                option.includes("Prescription")
+                  ? "btn-active"
+                  : "btn-not-active"
+              }`}
+              onClick={() => setOption("Prescription")}
+            >
+              Prescription
+            </button>
+            <button
+              className={`${
+                option.includes("Patient") ? "btn-active" : "btn-not-active"
+              }`}
+              onClick={() => setOption("Patient")}
+            >
+              Patient
+            </button>
+          </div>
           <div>
+            {option.includes("Prescription") ? (
               <form
-                className="contact"
+                className="from-medical-doctor"
                 action
                 method="post"
                 onSubmit={AddUPatient}
               >
                 <h3>Prescription</h3>
-                <div className="col50 colleft">
-                  <div className="col50 colleft">
-                    <div className="wd50">
-                      <label name>Patient Id</label>
-                      <input
-                        placeholder="Patient name"
-                        name="user"
-                        type="text"
-                        className="input_Prescription"
-                        required
-                        autofocus
-                      />
-                    </div>
-                    <div className="wd50">
-                      <label name>Pharmaceutical</label>
-                      <input
-                        placeholder="Pharmaceutical"
-                        type="text"
-                        name="pharmaceutical"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="col50 colright">
-                    <div className="wd50">
-                      <label name> Patients Condition</label>
-                      <input
-                        name="patientscondition"
-                        placeholder=" Patients Condition"
-                        type="text"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="col50 colright">
-                  <div className="col50 colleft">
-                    <div className="wd50">
-                      <label name>Doctor Id</label>
-                      <input
-                        placeholder="DoctorId"
-                        name="DoctorId"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-                  <div className="col50 colright">
-                    <div className="wd50">
-                      <label name>Description</label>
-                      <input
-                        placeholder="Description"
-                        type="text"
-                        name="desc"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="wd100">
-                  <hr />
-                </div>
 
-                <div className="wd100">
-                  <button
-                    name="submit"
-                    type="submit"
-                    // id
-                    // data-submit="...Sending"
-                  >
-                    Submit
-                  </button>
-                </div>
+                <label name>Patient Id</label>
+                <input
+                  placeholder="Patient name"
+                  name="user"
+                  type="text"
+                  className="input_Prescription"
+                  required
+                  autoFocus
+                />
+
+                <label name>Pharmaceutical</label>
+                <input
+                  placeholder="Pharmaceutical"
+                  type="text"
+                  name="pharmaceutical"
+                  required
+                />
+
+                <label name> Patients Condition</label>
+                <input
+                  name="patientscondition"
+                  placeholder=" Patients Condition"
+                  type="text"
+                  required
+                />
+
+                <label name>Doctor Id</label>
+                <input placeholder="DoctorId" name="DoctorId" type="text" />
+
+                <label name>Description</label>
+                <input
+                  placeholder="Description"
+                  type="text"
+                  name="desc"
+                  required
+                />
+
+                <button
+                  name="submit"
+                  type="submit"
+                  // id
+                  // data-submit="...Sending"
+                >
+                  Submit
+                </button>
               </form>
-          </div>
-          <div>
-            <form
-              className="contact-1"
-              action
-              method="post"
-              onSubmit={AddUsewr}
-            >
-              <h3>patient</h3>
-              <div className="col50 colleft">
-                <div className="col50 colleft">
-                  <div className="wd50">
-                    <label> Patient FullName</label>
-                    <input
-                      placeholder="username"
-                      name="username"
-                      type="text"
-                      required
-                      autofocus
-                    />
-                  </div>
-                  <div className="wd50">
-                    <label name>Password</label>
-                    <input
-                      placeholder="Pharmaceutical"
-                      type="text"
-                      name="password"
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="col50 colright">
-                  <div className="wd50">
-                    <label> phone </label>
-                    <input
-                      name="phone"
-                      placeholder=" Patients Condition"
-                      type="text"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="col50 colright">
-                <div className="col50 colleft">
-                  <div className="wd50">
-                    <label name>Email</label>
-                    <input placeholder="email" name="email" type="img" />
-                  </div>
-                </div>
-                <div className="col50 colright">
-                  <div className="wd50">
-                    <label name>PatientId</label>
-                    <input
-                      placeholder="patientId"
-                      type="text"
-                      name="patientId"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="wd100">
-                <hr />
-              </div>
+            ) : (
+              ""
+            )}
+            {option.includes("Patient") ? (
+              <form
+                className="from-medical-doctor"
+                action
+                method="post"
+                onSubmit={AddUsewr}
+              >
+                <h3>patient</h3>
+                <label> Patient FullName</label>
+                <input
+                  placeholder="username"
+                  name="username"
+                  type="text"
+                  required
+                  autoFocus
+                />
+                <label name>Password</label>
+                <input
+                  placeholder="Pharmaceutical"
+                  type="text"
+                  name="password"
+                  required
+                />
 
-              <div className="wd100">
+                <label> phone </label>
+                <input
+                  name="phone"
+                  placeholder=" Patients Condition"
+                  type="text"
+                  required
+                />
+
+                <label name>Email</label>
+                <input placeholder="email" name="email" type="img" />
+
+                <label name>PatientId</label>
+                <input
+                  placeholder="patientId"
+                  type="text"
+                  name="patientId"
+                  required
+                />
+
                 <button name="submit" type="submit" id data-submit="...Sending">
                   Submit
                 </button>
-              </div>
-            </form>
+              </form>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
-        </div>
-      </div>
-
-      <div className="grid-medical-doctor">
-        <div className="box">
-          <form name="search">
-            <input
-              type="text"
-              className="input-sh"
-              name="txt"
-              onmouseout="document.search.txt.value = ''"
-              onChange={(e) => setSearched(e.target.value)}
-            />{" "}
-            <span onClick={() => serch()} className="deff">
-              {" "}
-              Search{" "}
-            </span>
-          </form>
-        </div>
-
-        {/* {patients.map((item, i) => {
-          return (
-            <table>
-              <div>
-                <div className="boxContiner-1">
-                  <div className="boxBody-1">
-                    <div className="card-12">
-                      <div className="profileImage-12" />
-
-                      <div className="nameFamily-12">
-                        <h1>Reviewers Card</h1>
-                        <td>FullName</td>
-                        <td>:</td>
-                        <td>{item.fullName}</td>
-                      </div>
-                      <div className="nameFamily-12">
-                        <td>Email</td>
-                        <td>:</td>
-                        <td>{item.email}</td>
-                      </div>
-                      <div className="nameFamily-12">
-                        <td>Phone</td>
-                        <td>:</td>
-                        <td>{item.phone}</td>
-                      </div>
-
-                      <div className="nameFamily-12">
-                        <td>Patient Id</td>
-                        <td>:</td>
-                        <td>{item.patientId}</td>
-                      </div>
-
-                      <div className="socialMedia">
-                        <div className="mail"></div>
-
-                        <div className="linkdin"></div>
-                        <div className="phone"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </table>
-          );
-        })} */}
-      </div>
+      </section>
     </>
   );
 };

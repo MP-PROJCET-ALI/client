@@ -29,64 +29,63 @@ const Forget = () => {
 
   return (
     <>
-        <NAVBAR/>
+      <NAVBAR />
 
-    <div className="login-wrap">
-      <div className="login-html">
-        <input
-          id="tab-5"
-          type="radio"
-          name="tab-5"
-          className="sign-in"
-          defaultChecked
-        />
-        <label htmlFor="tab-5" className="tab">
-          <h1>Why did you forget :(</h1>
-        </label>
-        <input id="tab-2" type="radio" name="DoctorId" className="sign-up" />
-        <label htmlFor="tab-2" className="tab"></label>
-        <div className="login-form">
-          <div className="sign-in-htm">
-            <form onSubmit={reset}>
-              <div className="group" name="email">
-                <label htmlFor="email" className="label">
-                  Email
-                </label>
-                <input id="user" type="text" name="email" className="input" />
-              </div>
+      <div className="login-wrap">
+        <div className="login-html">
+          <input
+            id="tab-5"
+            type="radio"
+            name="tab-5"
+            className="sign-in"
+            defaultChecked
+          />
+          <label htmlFor="tab-5" className="tab">
+            <h1>Why did you forget :(</h1>
+          </label>
+          <input id="tab-2" type="radio" name="DoctorId" className="sign-up" />
+          <label htmlFor="tab-2" className="tab"></label>
+          <div className="login-form">
+            <div className="sign-in-htm">
+              <form onSubmit={reset}>
+                <div className="group" name="email">
+                  <label htmlFor="email" className="label">
+                    Email
+                  </label>
+                  <input id="user" type="text" name="email" className="input" />
+                </div>
 
-              <div className="group">
-                <input
-                  id="check"
-                  type="checkbox"
-                  className="check"
-                  defaultChecked
-                />
-                <label htmlFor="check">
-                  <span className="icon" /> Keep me Signed in
-                </label>
-              </div>
-              <div className="group">
-                <button type="submit" className="button" defaultValue="Send">
-                  Send
-                </button>
-              </div>
-              <p>{err}</p>
-              <h3
-                onClick={() => {
-                  navigate("/login");
-                }}
-              >
-               <GrLogin/>
-              </h3>
-            </form>
-            <div className="hr" />
+                <div className="group">
+                  <input
+                    id="check"
+                    type="checkbox"
+                    className="check"
+                    defaultChecked
+                  />
+                  <label htmlFor="check">
+                    <span className="icon" /> Keep me Signed in
+                  </label>
+                </div>
+                <div className="group">
+                  <button type="submit" className="button" defaultValue="Send">
+                    Send
+                  </button>
+                </div>
+                <p>{err}</p>
+                <h3
+                  onClick={() => {
+                    navigate("/login");
+                  }}
+                >
+                  <GrLogin />
+                </h3>
+              </form>
+              <div className="hr" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </>
-  
   );
 };
 

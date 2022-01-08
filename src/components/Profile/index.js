@@ -4,6 +4,7 @@ import "./style.css";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import NAVBAR from "../Navbar";
+import { AiFillEdit } from "react-icons/ai";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Profile = () => {
@@ -13,7 +14,7 @@ const Profile = () => {
   const [edit, setEdit] = useState("");
   const [editEmail, setEmail] = useState("");
   const [toggleName, setToggleName] = useState(false);
-  const [togglePhone, setTogglePhone] = useState(false)
+  const [togglePhone, setTogglePhone] = useState(false);
 
   const getData = async () => {
     const item = await axios.get(`${BASE_URL}/email/${local.result.email}`);
@@ -48,7 +49,7 @@ const Profile = () => {
     );
     console.log(editFullName);
     setToggleName(false);
-    setTogglePhone(false)
+    setTogglePhone(false);
     document.getElementById("username");
     getData();
   };
@@ -65,93 +66,95 @@ const Profile = () => {
         {account.map((item, i) => {
           return (
             <>
-              <div>
-                <div className="main">
-                  <div className="card">
-                    <div className="card-body">
-                      <i className="fa fa-pen fa-xs edit" />
-                      <form onSubmit={editName}>
-                        <table>
-                          <div className="profile_P">
-                            <h2>PROFILE</h2>
-                          </div>
-                          <tbody>
-                            <tr>
-                              <td>Name</td>
-                              <td>:</td>
+              <section className="home-section section-profile">
+                <div className="profile-container">
+                  <form onSubmit={editName} className={"profile-form"}>
+                    <h1>PROFILE</h1>
+                    <h1> Hi {item.fullName}</h1>
 
-                              <td>{item.fullName}</td>
-                              {toggleName ? (
-                                <div>
-                                  <input
-                                    type="text"
-                                    name="fullName"
-                                    placeholder="Changing You fullName"
-                                    className="show"
-                                  />
-                                </div>
-                              ) : (
-                                <button
-                                  className="Button_Change"
-                                  onClick={() => setToggleName(true)}
-                                >
-                                  Edit name
-                                </button>
-                              )}
-                            </tr>
-                            <tr>
-                              <td>Email</td>
-                              <td>:</td>
-                              <td>{item.email}</td>
-                            </tr>
-
-                            <tr>
-                              <td>phone</td>
-                              <td>:</td>
-                              <td>{item.phone}</td>
-                              
-                               {togglePhone ? (
-                                <div>
-                                  <input
-                                type="text"
-                                name="phone"
-                                placeholder="Changing You phone"
-                                className="show"
-                              /> 
-                                </div>
-                              ) : (
-                                <button
-                                  className="Button_Change"
-                                  onClick={() => setTogglePhone(true)}
-                                >
-                                  Edit name
-                                </button>
-                              )}
-                            </tr>
-                            <tr>
-                              <td>status</td>
-                              <td>:</td>
-                              <td>{item.status1.status}</td>
-                            </tr>
-                            <tr>
-                              <td>workAt</td>
-                              <td>:</td>
-                              <td>{item?.workAt?.fullName}</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    <div className={"profile-item"}>
+                      <div>
+                        <p>Name: </p>
+                        <p>{item.fullName}</p>
+                      </div>
+                      {toggleName ? (
+                        <div className={"input-field"}>
+                          <input
+                            type="text"
+                            name="fullName"
+                            placeholder="Enter your name"
+                            className="show"
+                          />
+                        </div>
+                      ) : (
                         <button
-                          type="submit"
-                          // className="button"
-                          className="Button_Change"
+                          className={"input-btn"}
+                          onClick={() => setToggleName(true)}
                         >
-                          Change
+                          <AiFillEdit />
                         </button>
-                      </form>
+                      )}
                     </div>
-                  </div>
+
+                    <div className={"profile-item"}>
+                      <div>
+                        <p>Email: </p>
+                        <p>{item.email}</p>
+                      </div>
+                    </div>
+
+                    <div className={"profile-item"}>
+                      <div>
+                        <p>Phone:</p>
+                        <p>{item.phone}</p>
+                      </div>
+
+                      {togglePhone ? (
+                        <div>
+                          <input
+                            type="text"
+                            name="phone"
+                            placeholder="Enter your phone"
+                            className="show"
+                          />
+                        </div>
+                      ) : (
+                        <button
+                          className="Button_Change"
+                          onClick={() => setTogglePhone(true)}
+                        >
+                          <AiFillEdit />
+                        </button>
+                      )}
+                    </div>
+                    <div className={"profile-item"}>
+                      <div>
+                        <p>Status:</p>
+
+                        <p>{item.status1.status}</p>
+                      </div>
+                    </div>
+                    <div className={"profile-item"}>
+                      <div>
+                        <p>Work At:</p>
+                        <p>{item?.workAt?.fullName}</p>
+                      </div>
+                    </div>
+
+                    {toggleName || togglePhone ? (
+                      <button
+                        type="submit"
+                        className="profile-submit-btn"
+                        className="profile-save"
+                      >
+                        Save
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                  </form>
                 </div>
-              </div>
+              </section>
             </>
           );
         })}

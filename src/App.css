@@ -1,0 +1,15 @@
+body{
+    overflow: hidden;
+    overflow-y: scroll;
+}
+*{
+    margin: 0;
+    padding: 0;
+    transition: all 300ms;
+}
+body, html {
+    height: 100%;
+}
+ul{
+    list-style-type: none;
+}
