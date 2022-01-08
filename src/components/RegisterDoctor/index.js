@@ -6,6 +6,8 @@ const RegisterDoctor = () => {
   const navigate = useNavigate();
   const loc = useLocation();
   const [user, setUser] = useState([]);
+  const [option, setOption] = useState("up");
+
 
   useEffect(() => {
       console.log(loc.state.doctorId);
@@ -37,71 +39,66 @@ console.log(result.data);
 
   return (
     <>
-    
-      <div className="login-wrap">
-        <div className="login-html">
-          <input id="tab-1" type="radio" name="tab-1" className="sign-up" />
-          <label htmlFor="tab-1" className="tab">
-            Sign Up
-          </label>
-          <div className="login-form">
-           
-            <form onSubmit={signup}>
-              <div className="sign-up-htm">
-                <div className="group">
-                  <label htmlFor="user" className="label">
-                    Username
-                  </label>
-                  <input
-                    id="user"
-                    type="text"
-                    name="username"
-                    className="input"
-                  />
-                </div>
-                <div className="group">
-                  <label htmlFor="pass" className="label">
-                    Password
-                  </label>
-                  <input
-                    id="pass"
-                    name="Password1a"
-                    type="password"
-                    className="input"
-                    data-type="password"
-                  />
-                </div>
-                <div className="group">
-                  <label htmlFor="pass" className="label">
-                  phone
-                  </label>
-                  <input
-                    id="user"
-                    name="phone"
-                    type="text"
-                    className="input"
-                  />
-                </div>
-                <div className="group">
-                  <label htmlFor="pass" className="label">
-                    Email Address
-                  </label>
-                  <input id="pass" type="text" className="input" name="email" />
-                </div>
-           
+      <section className="section-login home-section section-medical-doctor">
+        <div className="medical-doctor-froms">
+          
+         
+          <div>
+            {option.includes("up") ? (
+              <form
+                className="from-medical-doctor"
+                action
+                method="post"
+                onSubmit={signup}
+              >
+                <label name>Username</label>
+                <input
+                  placeholder="Enter your username"
+                  name="username"
+                  type="text"
+                  required
+                  autoFocus
+                />
 
-                <div className="group">
-                  <button placeholder="send" className="button" type="submit">
-                    Sign Up
-                  </button>
-                </div>
-                <div className="hr" />
-                
-              </div>
-            </form>
+                <label name>Password</label>
+                <input
+                  placeholder="Enter your password"
+                  type="password"
+                  name="Password1a"
+                  required
+                />
+                <label name>Repeat Password</label>
+                <input
+                  placeholder="Retype your password"
+                  type="password"
+                  name="passwordaa2"
+                  required
+                />
+                <label name>Email Address</label>
+                <input
+                  placeholder="Enter your email"
+                  type="email"
+                  name="email"
+                  required
+              />
+
+                <button
+                  name="submit"
+                  type="submit"
+                  // id
+                  // data-submit="...Sending"
+                >
+                  Sign Up
+                </button>
+              
+              </form>
+            ) : (
+              ""
+            )}
           </div>
         </div>
-      </div>
+      </section>
+    
       );
     </>
   );

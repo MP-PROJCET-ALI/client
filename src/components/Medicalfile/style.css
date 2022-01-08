@@ -1,43 +1,8 @@
-.info_per {
-    position: absolute;
-    top: 15%;
-    left: 39%;
-    width: 40%;
-    height: 70vh;
-    border-radius: 25px;
-    background: rgb(216, 205, 205);
-}
-.info_tab {
-  width: 50%;
-}
-td {
-  background: black;
-}
-.tbody_info {
-    width: 82.5vh;
-    height: 87%;
-    border-radius: 0px;
-}
-
-.tbody_info td {
-    
-    border-radius: 5px;
-}
-.text_center_td{
-    text-align: center;
-    width: 3%;
-}
-
-.Perscription{
-  text-align: center;
-}
-.back_info_Backing{
-    margin-left: 10px;
-    cursor: pointer;
-}
-.back_inf{
-    cursor: pointer;
+#grid-5{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
 }
+#grid-7{
+    grid-template-columns: repeat(6, 1fr);
 
-
+}

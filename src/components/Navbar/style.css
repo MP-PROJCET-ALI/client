@@ -5,7 +5,8 @@
 .logo{
     width:10%;
     min-width: 46px;
-    justify-self: start;
+    justify-self: center;
+    padding: 16px 0 0 0;
 }
 .login_nav{
     font-size: 25px;
@@ -14,12 +15,11 @@
 .grid-nav{
     width: 100%;
     display:grid;
-    grid-template-columns: 0.5fr 2fr 1fr;
+    grid-template-columns: 1fr 5fr 1fr;
     justify-items: center;
     align-items: end;
     padding: 6px 64px;
     color:#48C1C9;
-
 }
 .routes{
     display:flex;
@@ -30,9 +30,11 @@
     gap: 32px;
     font-size:18px;
 }
-.navbar-link{
-    transition: all 0.3s;
+.navbar-link, .navbar-link:visited{
+    text-decoration: none;
+    transition: all 0.2s;
 }
 .navbar-link:hover{
     color:#2e787e;
+    border-bottom: 1px solid;
 }

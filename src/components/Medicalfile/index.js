@@ -10,9 +10,13 @@ const Medicalfile = () => {
   const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const [searched, setSearched] = useState("");
+
   const [show, setShow] = useState(false);
   const [onePerscription, setOnePerscription] = useState([]);
   const [medical, setMedical] = useState([]);
+  const [patients, setPatients] = useState([]);
+
   console.log(JSON.parse(localStorage.getItem("user")).result._id);
 
   const found = localStorage.getItem("searched")
@@ -71,6 +75,21 @@ const Medicalfile = () => {
     getPosts();
   }, []);
   // search
+  const getPatientsForDoctor = async () => {
+    console.log(JSON.parse(localStorage.getItem("user")).result.DoctorId);
+    try {
+      const result = await axios.post(
+        `${BASE_URL}/gerusers/${
+          JSON.parse(localStorage.getItem("user")).result.DoctorId
+        }`
+      );
+      console.log(result.data[0]);
+      setPatients(result.data[0].patients);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const serch = async () => {
     try {
       const result = await axios.post(`${BASE_URL}/search`, {
@@ -82,142 +101,83 @@ const Medicalfile = () => {
       console.log(error);
     }
   };
-  const [searched, setSearched] = useState("");
   useEffect(() => {
     console.log(searched);
   }, [searched]);
+  useEffect(() => {
+    getPatientsForDoctor();
+  }, []);
 
   return (
     <>
       <NAVBAR />
 
-      <>
-        {medical?.result?.role == "61c4983a20623279b6c0768c" ? (
+      <section className={"home-section section-medical-doctor"}>
+        <div className="patient-list">
+          <h2>Prescription</h2>
+          <div className="list-row" id={"grid-5"}>
+            <p>Treatment Name</p>
+            <p>Data</p>
+            <p>Show</p>
+            <p>Edit</p>
+            <p>Delete</p>
+          </div>
+          {medical.map((item, i) => {
+            console.log(item.DoctorId.DoctorId);
+            return (
+              <>
+                <div className="list-row " id={"grid-5"}>
+                  <p>{item.pharmaceutical}</p>
+                  <p>{item.time}</p>
+                  <p
+                    className="back_inf"
+                    onClick={() => {
+                      setShow(true);
+                      setOnePerscription(item);
+                    }}
+                  >
+                    <GrDocumentOutlook />
+                  </p>
+
+                  {localStorage.getItem("searched") ? <p>Edit</p> : <></>}
+                  {localStorage.getItem("searched") ? (
+                    <p onClick={() => deletePost(item._id)}>Delete</p>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </>
+            );
+          })}
+        </div>
+
+        {show ? (
           <>
-            <div className="">
-              <form name="search">
-                <input
-                  type="text"
-                  className="input-sh"
-                  name="txt"
-                  onmouseout="document.search.txt.value = ''"
-                  onChange={(e) => setSearched(e.target.value)}
-                />{" "}
-                <span
-                  onClick={() => serch()}
-                  className="deff"
-                  onClick={() => navigate("/Medicalfile")}
-                >
-                  {" "}
-                  Search{" "}
-                </span>
-              </form>
+            <div className="patient-list">
+              <h1 className="Perscription">Perscription info</h1>
+              <div className="list-row" id={"grid-7"}>
+                <p>Treatment Name</p>
+                <p>Dosage</p>
+                <p>Recipient</p>
+                <p>Doctor's</p>
+                <p>Data</p>
+                <p className="back_info_Backing" onClick={() => setShow(false)}>
+                  <VscDebugStepBack />
+                </p>
+              </div>
+              <div className="list-row" id={"grid-7"}>
+                <td>{onePerscription.pharmaceutical}</td>
+                <td>{onePerscription.desc}</td>
+                <td>{onePerscription.user.fullName}</td>
+                <td>{onePerscription.DoctorId.fullName}</td>
+                <p>{onePerscription.time}</p>
+              </div>
             </div>
           </>
         ) : (
           <></>
         )}
-      </>
-
-      <div className="">
-        <h2>Prescription</h2>
-        {medical.map((item, i) => {
-          console.log(item.DoctorId.DoctorId);
-          return (
-            <div>
-              {/*  */}
-
-              <div className="">
-                <div className="">
-                  <div className="">
-                    <i className="" />
-                    {localStorage.getItem("searched") ? (
-                      <button onClick={() => deletePost(item._id)}>
-                        Delete
-                      </button>
-                    ) : (
-                      <></>
-                    )}
-                    {localStorage.getItem("searched") ? (
-                      <button>Edit</button>
-                    ) : (
-                      <></>
-                    )}
-
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td>Treatment Name</td>
-                          <td>:</td>
-                          <td>{item.pharmaceutical}</td>
-                        </tr>
-
-                        <tr>
-                          <td>Data</td>
-                          <td>:</td>
-                          <td>
-                            {item.time}
-                            <h1
-                            className="back_inf"
-                              onClick={() => {
-                                setShow(true);
-                                setOnePerscription(item);
-                              }}
-                            >
-                              <GrDocumentOutlook />
-                            </h1>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {show ? (
-        <div className="info_per">
-          <h1 className="Perscription">Perscription info</h1>
-          <div className="info_InPer"></div>
-          <table className="tbody_info">
-            <tbody className="tbody_info">
-              <tr>
-                <td>Treatment Name</td>
-                <td className="text_center_td">:</td>
-                <td>{onePerscription.pharmaceutical}</td>
-              </tr>
-              <tr>
-                <td>Dosage</td>
-                <td>:</td>
-                <td>{onePerscription.desc}</td>
-              </tr>
-              <tr>
-                <td>Recipient</td>
-                <td>:</td>
-                <td>{onePerscription.user.fullName}</td>
-              </tr>
-              <tr>
-                <td>Doctor's Name</td>
-                <td>:</td>
-                <td>{onePerscription.DoctorId.fullName}</td>
-              </tr>
-              <tr>
-                <td>Data</td>
-                <td>:</td>
-                <td>{onePerscription.time}</td>
-              </tr>
-            </tbody>
-          </table>
-          <h2  className="back_info_Backing" onClick={() => setShow(false)}>
-            <VscDebugStepBack />
-          </h2>
-        </div>
-      ) : (
-        <></>
-      )}
+      </section>
     </>
   );
 };
