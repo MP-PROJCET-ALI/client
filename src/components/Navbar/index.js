@@ -7,7 +7,7 @@ import "./style.css";
 import { AiOutlineLogin } from "react-icons/ai";
 import { BiLogOutCircle } from "react-icons/bi";
 
-// navbar
+// navbar//
 const NAVBAR = () => {
   const navigate = useNavigate();
 
