@@ -107,7 +107,7 @@ const Doctor = () => {
             />
           </form>
           <button name="submit" type="submit" onClick={move}>
-            Sign In
+          Go To The patient Page
           </button>
           <div className="list-row">
             <p>Name</p>
