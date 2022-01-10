@@ -113,7 +113,7 @@ const Profile = () => {
                         <div>
                           <input
                             type="text"
-                            name="phone"
+                            name="   "
                             placeholder="Enter your phone"
                             className="show"
                           />

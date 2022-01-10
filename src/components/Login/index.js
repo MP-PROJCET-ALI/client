@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import NAVBAR from "../Navbar";
 import Swal from "sweetalert2";
 
@@ -126,11 +126,7 @@ const Login = () => {
                   required
                 />
 
-                <button
-                  name="submit"
-                  type="submit"
-                
-                >
+                <button name="submit" type="submit">
                   Sign In
                 </button>
                 <div>
@@ -154,11 +150,13 @@ const Login = () => {
                     Sign up here
                   </a>
                 </div>
-
-                <a href={"/forgot"} className="ary_you">
-                  Forgot Password?
-                </a>
-
+                <ul>
+                <li className="list-nav">
+                  <Link to="/forgot" className="navbar-link">
+                    Forgot Password?
+                  </Link>
+                </li>
+                </ul>
                 <p>{err}</p>
                 <label className="ary_you">Are you a Doctor ?</label>
                 <button

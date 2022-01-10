@@ -54,8 +54,14 @@
 } */
 
 @media screen and (max-width:813px){
-    .about-section{
-       width:77vh;
+    /* .about-section{
+        width: 186vh;
     }
+    .inner-container {
+        width: 54%;
+        float: right;
+        background-color: #fdfdfd;
+        padding: 109px;
+    } */
    
 }
