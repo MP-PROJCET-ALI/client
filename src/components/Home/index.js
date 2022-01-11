@@ -17,6 +17,8 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Home = () => {
   return (
     <>
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <NAVBAR />
       <section className="home-section">
         <div className="home-left">
