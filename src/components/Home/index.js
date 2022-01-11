@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css";
 import img1 from "../../imge/logo-removebg-preview.png";
 import { BiRightArrowAlt } from "react-icons/bi";
 import NAVBAR from "../Navbar";
@@ -10,6 +9,8 @@ import {
   GiStomach,
 } from "react-icons/gi";
 import { FaBrain } from "react-icons/fa";
+import "./style.css";
+
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
