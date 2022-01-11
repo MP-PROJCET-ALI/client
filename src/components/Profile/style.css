@@ -65,19 +65,3 @@ button{
     padding: 6px 38px;
     align-self: center;
 }
-
-@media (max-width: 400px){
-.navbar-header {
-    background: #fff;
-    width: 101rem;
-}
-.profile-container {
-    background: white;
-    padding: 32px;
-    border-radius: 6px;
-    min-width: 53%;
-    max-height: 553px;
-}
-
-
-}

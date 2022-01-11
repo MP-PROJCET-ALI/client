@@ -6,19 +6,3 @@
     grid-template-columns: repeat(6, 1fr);
 
 }
-
-@media (mix-width: 400px) {
-
-    .section-medical-doctor {
-        height: 150vh;
-        padding-left: 0rem;
-        justify-content: end;
-        justify-items: end;
-        align-items: start;
-    }
-
-    body {
-        background-color: red;
-    }
-    
-}
