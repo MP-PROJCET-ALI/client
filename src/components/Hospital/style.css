@@ -1,0 +1,132 @@
+/* .login-wrap{
+    margin-top: 15%;
+    border-radius:20px;
+}
+ */
+ .contact-3 {
+    background: #f9f9f9;
+    padding: 25px;
+    margin-top: 15%;
+}
+.contact-3 h3 {
+  display: block;
+  font-size: 16px;
+}
+.contact-3 p {
+  margin: 5px 0;
+}
+.contact-3 input[type="text"],
+.contact-3 input[type="email"],
+.contact-3 input[type="tel"],
+.contact-3 input[type="url"],
+.contact-3 select,
+.contact-3 textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin: 0 0 5px;
+  line-height: 24px;
+  padding: 0;
+  text-indent: 8px;
+}
+.contact-3 select {
+  padding: 3px 7px;
+  text-indent: 0;
+}
+
+.contact-3 input[type="text"]:hover,
+.contact-3 input[type="email"]:hover,
+.contact-3 input[type="tel"]:hover,
+.contact-3 input[type="url"]:hover,
+.contact-3 textarea:hover {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border-color: #373737;
+}
+.contact-3 textarea {
+  max-height: 120px;
+  min-height: 60px;
+  min-width: 100%;
+  max-width: 100%;
+}
+.contact-3 button[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #0cf;
+  color: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+.contact-3 button[type="submit"]:hover {
+  background: #09c;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.contact-3 button[type="submit"]:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.contact-3 input:focus,
+.contact-3 textarea:focus {
+  outline: 0;
+  border: 1px solid #999;
+}
+
+
+/* كارد الدكتور */
+/* * {
+  margin: 0 auto;
+  font-family: Gudea;
+  padding: 0;
+} */
+.boxContiner-1 {
+  display: flex;
+  flex-direction: row;
+}
+.boxBody-1 {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.card-12 {
+  width: 250px;
+  padding: 20px;
+  height: 350px;
+  border: 5px solid #f5f5f5;
+  margin-top: 20px;
+  border-radius: 1pc;
+  /* 	background: linear-gradient(0deg, rgba(179,229,252,1) 1%, rgba(41,182,246,1) 79%); */
+  /* background-image: radial-gradient(
+    circle at 56.16% 120.44%,
+    #c6f3ff 0,
+    #8cd5fe 25%,
+    #3cb5f2 50%,
+    #0095e6 75%,
+    #0078dc 100% */
+  /* ); */
+  background: white;
+}
+
+
+.nameFamily-12 p {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #f5f5f5;
+  margin-top: 20px;
+}
+.nameFamily-12 span {
+  display: flex;
+  justify-content: center;
+  margin-top: 7px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #e6e6e6;
+}
