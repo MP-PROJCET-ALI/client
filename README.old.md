@@ -2,7 +2,7 @@
 
 ➤ Server side: https://github.com/MP-PROJCET-ALI/Server
 
-➤ Deployment: https://Deployment
+➤ Deployment:https://project-client-fronend.herokuapp.com/
 
 ➤ While running Frontend: http://localhost:3000
 
