@@ -36,7 +36,7 @@ const Profile = () => {
 
   const editName = async (e) => {
     e.preventDefault();
-    // console.log(e.target[1].value);
+    // console.log(e.target[1].value);d
 
     const editFullName = await axios.put(
       `${BASE_URL}/updateProfile/${local.result._id}`,
