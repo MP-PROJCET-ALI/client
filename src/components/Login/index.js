@@ -19,7 +19,7 @@ const Login = () => {
   const [err, setErr] = useState("");
 
   const login = async (e) => {
-    console.log(e.target.email.value);
+    // console.log(e.target.email.value);
     try {
       e.preventDefault();
       const result = await axios.post(`${BASE_URL}/login`, {
@@ -140,7 +140,7 @@ const Login = () => {
                     <span className="icon" /> Keep me Signed in
                   </label>
                 </div>
-                <div>
+                {/* <div>
                   <label className="ary_you">Are you a Doctor ?</label>
                   <a
                     onClick={() => navigate("/Doctorid")}
@@ -149,7 +149,7 @@ const Login = () => {
                   >
                     Sign up here
                   </a>
-                </div>
+                </div> */}
                 <ul>
                 <li className="list-nav">
                   <Link to="/forgot" className="navbar-link">

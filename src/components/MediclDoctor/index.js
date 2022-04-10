@@ -13,17 +13,17 @@ const Doctor = () => {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-  console.log(JSON.parse(localStorage.getItem("user")));
+  // console.log(JSON.parse(localStorage.getItem("user")));
 
   const getPatientsForDoctor = async () => {
-    console.log(JSON.parse(localStorage.getItem("user")).result.DoctorId);
+    // console.log(JSON.parse(localStorage.getItem("user")).result.DoctorId);
     try {
       const result = await axios.post(
         `${BASE_URL}/gerusers/${
           JSON.parse(localStorage.getItem("user")).result.DoctorId
         }`
       );
-      console.log(result.data[0]);
+      // console.log(result.data[0]);
       setPatients(result.data[0].patients);
     } catch (error) {
       console.log(error);
@@ -33,7 +33,7 @@ const Doctor = () => {
   const AddUPatient = async (e) => {
     try {
       e.preventDefault();
-      console.log("e.target.user.value");
+      // console.log("e.target.user.value");
       const result = await axios.post(`${BASE_URL}/newfilemodel`, {
         pharmaceutical: e.target.pharmaceutical.value,
         patientscondition: e.target.patientscondition.value,
@@ -41,7 +41,7 @@ const Doctor = () => {
         user: e.target.user.value,
         DoctorId: JSON.parse(localStorage.getItem("user")).result._id,
       });
-      console.log(result.data);
+      // console.log(result.data);
     } catch (error) {
       console.log(error);
     }
@@ -66,7 +66,7 @@ const Doctor = () => {
         docID: JSON.parse(localStorage.getItem("user")).result.DoctorId,
         patientId: e.target.patientId.value,
       });
-      console.log(result.data);
+      // console.log(result.data);
     } catch (error) {
       console.log(error);
     }
@@ -77,7 +77,7 @@ const Doctor = () => {
       const result = await axios.post(`${BASE_URL}/search`, {
         patientId: searched,
       });
-      console.log(result.data);
+      // console.log(result.data);
       localStorage.setItem("searched", result.data._id);
       navigate("/Medicalfile");
       
@@ -86,7 +86,7 @@ const Doctor = () => {
     }
   };
   useEffect(() => {
-    console.log(searched);
+    // console.log(searched);
   }, [searched]);
   useEffect(() => {
     getPatientsForDoctor();

@@ -14,7 +14,7 @@ const Hospital = () => {
         workAt: e.target.workAt.value,
         // role: "61c4983a20623279b6c0768c",
       });
-      console.log(result.data);
+      // console.log(result.data);
     } catch (error) {
       console.log(error);
     }
@@ -23,7 +23,7 @@ const Hospital = () => {
   const getDoctors = async (e) => {
     try {
       const result = await axios.get(`${BASE_URL}/getdoctors`);
-      console.log(result.data);
+      // console.log(result.data);
       setdoctors(
         result.data.filter(
           (i) =>
@@ -34,7 +34,7 @@ const Hospital = () => {
       console.log(error);
     }
   };
-  console.log(JSON.parse(localStorage.getItem("user")).result.role);
+  // console.log(JSON.parse(localStorage.getItem("user")).result.role);
 
   useEffect(() => {
     getDoctors();

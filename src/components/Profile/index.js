@@ -18,7 +18,7 @@ const Profile = () => {
 
   const getData = async () => {
     const item = await axios.get(`${BASE_URL}/email/${local.result.email}`);
-    console.log(item.data);
+    // console.log(item.data);
     setAccount(item.data);
   };
 
@@ -36,7 +36,7 @@ const Profile = () => {
 
   const editName = async (e) => {
     e.preventDefault();
-    console.log(e.target[1].value);
+    // console.log(e.target[1].value);
 
     const editFullName = await axios.put(
       `${BASE_URL}/updateProfile/${local.result._id}`,

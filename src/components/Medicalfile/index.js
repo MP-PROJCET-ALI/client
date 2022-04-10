@@ -17,16 +17,16 @@ const Medicalfile = () => {
   const [medical, setMedical] = useState([]);
   const [patients, setPatients] = useState([]);
 
-  console.log(JSON.parse(localStorage.getItem("user")).result._id);
+  // console.log(JSON.parse(localStorage.getItem("user")).result._id);
 
   const found = localStorage.getItem("searched")
     ? localStorage.getItem("searched")
     : JSON.parse(localStorage.getItem("user")).result._id;
   const getPosts = () => {
     try {
-      console.log("hhhhh");
+      // console.log("hhhhh");
       axios.get(`${BASE_URL}/filemodel/${found}`).then((result) => {
-        console.log(result.data);
+        // console.log(result.data);
         if (result.data) {
           setMedical(result.data);
         }
@@ -76,14 +76,14 @@ const Medicalfile = () => {
   }, []);
   // search
   const getPatientsForDoctor = async () => {
-    console.log(JSON.parse(localStorage.getItem("user")).result.DoctorId);
+    // console.log(JSON.parse(localStorage.getItem("user")).result.DoctorId);
     try {
       const result = await axios.post(
         `${BASE_URL}/gerusers/${
           JSON.parse(localStorage.getItem("user")).result.DoctorId
         }`
       );
-      console.log(result.data[0]);
+      // console.log(result.data[0]);
       setPatients(result.data[0].patients);
     } catch (error) {
       console.log(error);
@@ -102,7 +102,7 @@ const Medicalfile = () => {
     }
   };
   useEffect(() => {
-    console.log(searched);
+    // console.log(searched);
   }, [searched]);
   useEffect(() => {
     getPatientsForDoctor();
@@ -123,7 +123,7 @@ const Medicalfile = () => {
             <p>Delete</p>
           </div>
           {medical.map((item, i) => {
-            console.log(item.DoctorId.DoctorId);
+            // console.log(item.DoctorId.DoctorId);
             return (
               <>
                 <div className="list-row " id={"grid-5"}>
